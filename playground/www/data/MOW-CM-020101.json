@@ -1,0 +1,12 @@
+{
+  "as_of": "2026-11-18T10:00:00+09:00",
+  "notifications": [
+    { "id": "n-2001", "type": "schedule", "category": "schedule", "title": "방문 시간이 바뀌었어요", "body": "그린마트 역삼점 15:30 → 16:30", "created_at": "2026-11-18T09:50:00+09:00", "read_at": null, "target_screen": "MOW-CM-010101" },
+    { "id": "n-2002", "type": "task", "category": "work", "title": "마감이 지난 할 일이 있어요", "body": "청솔어린이집 체감효과 입력", "created_at": "2026-11-18T09:00:00+09:00", "read_at": null, "target_screen": "MOW-CM-030101" },
+    { "id": "n-2003", "type": "contract", "category": "work", "title": "계약이 승인됐어요", "body": "한빛식당 강남점 정기 방제 · 월 2회", "created_at": "2026-11-18T09:31:00+09:00", "read_at": "2026-11-18T09:35:00+09:00", "target_screen": null },
+    { "id": "n-2004", "type": "notice", "category": "notice", "title": "[공지] 11월 안전 교육 일정", "body": "11월 25일(화) 14시 · 강남지사 3층 교육장", "created_at": "2026-11-17T17:20:00+09:00", "read_at": "2026-11-17T18:02:00+09:00", "target_screen": null },
+    { "id": "n-2005", "type": "feedback", "category": "work", "title": "고객이 체감효과를 남겼어요", "body": "마루베이커리 · 해충 발생 감소", "created_at": "2026-11-17T11:05:00+09:00", "read_at": "2026-11-17T12:40:00+09:00", "target_screen": null },
+    { "id": "n-2006", "type": "security", "category": "notice", "title": "새 기기에서 로그인했어요", "body": "본인이 아니라면 비밀번호를 바꿔 주세요", "created_at": "2026-11-16T20:14:00+09:00", "read_at": "2026-11-16T20:30:00+09:00", "target_screen": null },
+    { "id": "n-2007", "type": "app", "category": "notice", "title": "앱이 업데이트됐어요", "body": "1.0.0 · 주요 서비스 순서를 바꿀 수 있어요", "created_at": "2026-11-16T09:00:00+09:00", "read_at": "2026-11-16T09:10:00+09:00", "target_screen": null }
+  ]
+}

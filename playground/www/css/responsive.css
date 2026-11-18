@@ -1,0 +1,13 @@
+/* 세스코 모바일 오피스 — 화면 폭 (2026-11-18 사용자: 흔히 쓰는 모바일 폭으로)
+ * 단일 마크업 · 모바일 전용.
+ *   기준 시안 : 390 × 844 · 최소 360
+ *   360~480   : 폭 100% 유동
+ *   481~      : 480 고정 · 가운데 정렬, 바깥은 회색 바탕 (태블릿 · PC에서도 모바일 화면 그대로)
+ * 확인 폭: 360 · 390 · 430 · 480
+ */
+.mo-app { max-width:480px; margin:0 auto; }
+
+@media (min-width:481px) {
+  body.mo-page { background:var(--cs-surface-muted); }
+  .mo-app { box-shadow:0 0 0 1px var(--cs-divider); }
+}

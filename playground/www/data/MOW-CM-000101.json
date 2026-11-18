@@ -1,0 +1,29 @@
+{
+  "request": {
+    "login_id": "minjun.kim",
+    "password": "••••••••",
+    "remember_id": true
+  },
+  "response": {
+    "access_token": "eyJhbGciOi…(생략)",
+    "expires_at": "2026-11-18T18:00:00+09:00",
+    "user": {
+      "id": "u-0101",
+      "name": "김민준",
+      "role": "SC",
+      "branch": "강남지사",
+      "team": "영업2팀",
+      "home_screen": "MOW-SC-010101"
+    }
+  },
+  "errors": [
+    {
+      "code": "invalid_credentials",
+      "message": "계정 또는 비밀번호가 맞지 않아요"
+    },
+    {
+      "code": "session_expired",
+      "message": "오래 사용하지 않아 로그아웃됐어요. 다시 로그인해 주세요"
+    }
+  ]
+}

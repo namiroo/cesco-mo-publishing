@@ -1,0 +1,89 @@
+{
+  "max_home": 8,
+  "services": [
+    {
+      "key": "contract",
+      "name": "계약 등록",
+      "required": true,
+      "order": 1,
+      "on_home": true
+    },
+    {
+      "key": "customer",
+      "name": "고객 조회",
+      "required": false,
+      "order": 2,
+      "on_home": true
+    },
+    {
+      "key": "planner",
+      "name": "SOL 플래너",
+      "required": false,
+      "order": 3,
+      "on_home": true
+    },
+    {
+      "key": "quote",
+      "name": "견적서",
+      "required": false,
+      "order": 4,
+      "on_home": true
+    },
+    {
+      "key": "history",
+      "name": "방제 이력",
+      "required": false,
+      "order": 5,
+      "on_home": true
+    },
+    {
+      "key": "effect",
+      "name": "체감효과",
+      "required": false,
+      "order": 6,
+      "on_home": true
+    },
+    {
+      "key": "settle",
+      "name": "정산",
+      "required": false,
+      "order": 7,
+      "on_home": true
+    },
+    {
+      "key": "notice",
+      "name": "공지사항",
+      "required": false,
+      "order": 8,
+      "on_home": true
+    },
+    {
+      "key": "diary",
+      "name": "영업일지",
+      "required": false,
+      "order": 9,
+      "on_home": false
+    },
+    {
+      "key": "report",
+      "name": "실적 현황",
+      "required": false,
+      "order": 10,
+      "on_home": false
+    },
+    {
+      "key": "inquiry",
+      "name": "고객 문의",
+      "required": false,
+      "order": 11,
+      "on_home": false
+    },
+    {
+      "key": "docs",
+      "name": "문서함",
+      "required": false,
+      "order": 12,
+      "on_home": false
+    }
+  ]
+}

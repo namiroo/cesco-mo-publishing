@@ -1,0 +1,11 @@
+{
+  "as_of": "2026-11-18T10:00:00+09:00",
+  "tasks": [
+    { "id": "t-1001", "title": "체감효과 입력", "customer_name": "청솔어린이집", "memo": "공기질 관리", "due_at": "2026-11-17T18:00:00+09:00", "done_at": null, "target_screen": null },
+    { "id": "t-1002", "title": "견적서 발송", "customer_name": "서울푸드 본사", "memo": "트랩 점검 추가", "due_at": "2026-11-18T13:00:00+09:00", "done_at": null, "target_screen": null },
+    { "id": "t-1003", "title": "재계약 일정 통화", "customer_name": "그린마트 역삼점", "memo": "담당 박지은 점장", "due_at": "2026-11-18T15:00:00+09:00", "done_at": null, "target_screen": null },
+    { "id": "t-1004", "title": "방문 보고 작성", "customer_name": "마루베이커리", "memo": "위생 진단", "due_at": "2026-11-18T18:00:00+09:00", "done_at": null, "target_screen": null },
+    { "id": "t-1005", "title": "정기 방제 계약 등록", "customer_name": "한빛식당 강남점", "memo": null, "due_at": "2026-11-18T12:00:00+09:00", "done_at": "2026-11-18T09:12:00+09:00", "target_screen": null },
+    { "id": "t-1006", "title": "방문 일정 확인 문자", "customer_name": "마루베이커리", "memo": null, "due_at": "2026-11-18T11:00:00+09:00", "done_at": "2026-11-18T08:40:00+09:00", "target_screen": null }
+  ]
+}

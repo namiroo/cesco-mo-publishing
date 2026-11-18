@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>디자인 플레이그라운드 | 세스코 모바일 오피스</title>
+<!-- 원본: 03_디자인/playground.html → python3 tools/build.py 가 05_전달/playground.html 로 복사 (화면 목록 주입) -->
+<style>
+  :root { --ink:#1B1F23; --sub:#4E5358; --mute:#676C71; --line:#E4E8EC; --bg:#F1F3F5; --acc:#0070DC; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.5 Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; color:var(--ink); background:var(--bg); }
+  .pg { display:grid; grid-template-columns:1fr 340px; min-height:100vh; }
+  .stage { display:flex; flex-direction:column; align-items:center; gap:16px; padding:24px; overflow:auto; }
+  .bar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  .bar select, .bar button { height:36px; padding:0 12px; border:1px solid var(--line); border-radius:8px; background:#fff; font:inherit; color:var(--ink); cursor:pointer; }
+  .bar button[aria-pressed="true"] { border-color:var(--ink); font-weight:700; }
+  .phones { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:center; }
+  .phone { display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .phone span { color:var(--mute); font-size:12px; font-variant-numeric:tabular-nums; }
+  .phone iframe { height:844px; border:0; border-radius:28px; background:#fff; box-shadow:0 0 0 8px #1B1F23, 0 20px 40px rgba(10,24,64,.18); }
+  .panel { position:sticky; top:0; height:100vh; overflow:auto; padding:20px; background:#fff; border-left:1px solid var(--line); }
+  h1 { margin:0 0 4px; font-size:18px; }
+  .lead { margin:0 0 16px; color:var(--sub); font-size:13px; }
+  .grp { margin:0 0 8px; border:1px solid var(--line); border-radius:10px; }
+  .grp summary { display:flex; align-items:center; justify-content:space-between; min-height:44px; padding:0 12px; font-size:14px; font-weight:700; cursor:pointer; list-style:none; }
+  .grp summary::-webkit-details-marker { display:none; }
+  .grp summary::after { content:'+'; color:var(--mute); font-weight:400; }
+  .grp[open] summary::after { content:'−'; }
+  .grp > .row { padding:0 12px; }
+  .grp > .row:last-child { padding-bottom:8px; }
+  .grp:has(.changed) summary { color:var(--acc); }
+  .row { display:grid; grid-template-columns:96px 1fr 56px; gap:8px; align-items:center; min-height:36px; }
+  .row label { font-size:13px; }
+  .row input[type=range] { width:100%; accent-color:var(--ink); }
+  .row output { font-size:12px; color:var(--mute); text-align:right; font-variant-numeric:tabular-nums; }
+  .row input[type=color] { width:100%; height:32px; padding:0 2px; border:1px solid var(--line); border-radius:6px; background:#fff; }
+  .row select { grid-column:2 / 4; width:100%; height:32px; padding:0 8px; border:1px solid var(--line); border-radius:6px; background:#fff; font:inherit; font-size:13px; }
+  .row input[type=checkbox] { justify-self:start; width:18px; height:18px; accent-color:var(--ink); }
+  .row.changed label { font-weight:700; }
+  .row.changed label::after { content:" •"; color:var(--acc); }
+  .act { display:grid; gap:8px; position:sticky; bottom:-20px; margin:0 -20px -20px; padding:16px 20px 20px; background:#fff; border-top:1px solid var(--line); }
+  .act button { height:44px; border:0; border-radius:10px; font:inherit; font-weight:700; cursor:pointer; }
+  .act .p { background:var(--ink); color:#fff; }
+  .act .s { background:var(--bg); color:var(--ink); }
+  .act pre { margin:0; max-height:140px; overflow:auto; padding:10px; background:var(--bg); border-radius:8px; font-size:11px; white-space:pre-wrap; }
+  .scope { display:grid; grid-template-columns:1fr 1fr; gap:4px; margin:0 0 16px; padding:4px; background:var(--bg); border-radius:10px; }
+  .scope button { height:36px; border:0; border-radius:8px; background:none; font:inherit; font-size:13px; color:var(--sub); cursor:pointer; }
+  .scope button[aria-pressed="true"] { background:#fff; color:var(--ink); font-weight:700; box-shadow:0 1px 2px rgba(10,24,64,.08); }
+  .sec { margin:20px 0 8px; font-size:12px; font-weight:700; color:var(--mute); }
+  .sec:first-of-type { margin-top:0; }
+  .none { margin:0 0 8px; padding:12px; border-radius:10px; background:var(--bg); color:var(--sub); font-size:13px; }
+  .grp summary small { margin-left:auto; margin-right:8px; color:var(--acc); font-size:12px; font-weight:700; }
+  .phone-link { margin:0 0 16px; padding:10px 12px; border-radius:8px; font-size:12px; color:var(--sub); background:var(--bg); word-break:break-all; }
+  .phone-link[data-ok="1"] { color:#036A49; background:#DAF5E4; }
+  .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); padding:10px 16px; background:var(--ink); color:#fff; border-radius:999px; font-size:13px; opacity:0; transition:opacity .2s; pointer-events:none; }
+  .toast.on { opacity:1; }
+  :focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+  @media (max-width:900px) { .pg { grid-template-columns:1fr; } .panel { position:static; height:auto; border-left:0; border-top:1px solid var(--line); } }
+</style>
+</head>
+<body>
+<div class="pg">
+  <main class="stage">
+    <div class="bar">
+      <select id="screen" aria-label="화면 고르기"></select>
+      <button type="button" data-w="390" aria-pressed="true">390</button>
+      <button type="button" data-w="360" aria-pressed="false">360</button>
+      <button type="button" data-w="both" aria-pressed="false">둘 다</button>
+    </div>
+    <div class="phones" id="phones"></div>
+  </main>
+
+  <aside class="panel" aria-label="디자인 값 조정">
+    <h1>디자인 플레이그라운드</h1>
+    <p class="lead">값을 바꾸면 화면에 바로 반영돼요. 마음에 들면 「Claude에 보낼 값 복사」 → 채팅에 붙여넣기 → 원본에 반영.</p>
+    <p class="phone-link" id="phone" data-ok="0">폰 연동 서버가 꺼져 있어요 (tools/live_sync.py)</p>
+    <div class="scope" role="group" aria-label="조절 묶음 범위">
+      <button type="button" id="scopeScr" aria-pressed="true">이 화면</button>
+      <button type="button" id="scopeAll" aria-pressed="false">모든 묶음</button>
+    </div>
+    <h2 class="sec" id="secScr">이 화면</h2>
+    <div id="scrBox"></div>
+    <p class="none" id="noneScr" hidden>이 화면 전용 조절 칸은 아직 없어요. 아래 공통 칸을 쓰세요.</p>
+    <h2 class="sec">모든 화면 공통</h2>
+    <div id="controls"></div>
+    <div class="act">
+      <pre id="diff">바뀐 값 없음</pre>
+      <button type="button" class="p" id="copy">Claude에 보낼 값 복사</button>
+      <button type="button" class="s" id="resetScr">이 화면 묶음만 처음 값으로</button>
+      <button type="button" class="s" id="reset">전부 처음 값으로</button>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+var SCREENS = [{"id": "MOW-CM-000101", "name": "로그인"}, {"id": "MOW-SC-010101", "name": "SC 홈"}, {"id": "MOW-SC-010102", "name": "주요서비스 전체 · 순서 편집"}, {"id": "MOW-SC-010103", "name": "전체 · 나의 메뉴 · 개인정보 공개 설정"}, {"id": "MOW-DE-010101", "name": "DE 홈"}, {"id": "MOW-CM-010101", "name": "SOL 플래너"}, {"id": "MOW-CM-030101", "name": "업무 (오늘 할 일)"}, {"id": "MOW-CM-030101E", "name": "업무 (오늘 할 일) · 할 일 없음"}, {"id": "MOW-CM-020101", "name": "알림"}, {"id": "MOW-CM-020101E", "name": "알림 · 알림 없음"}];
+/* 조정 항목: 디자인 시스템 토큰(--cs-*) 위에 덮어쓰기만 함. 원본 파일은 바뀌지 않음 */
+var W=function(n){ return 'color-mix(in srgb, var(--cs-static-white) '+n+'%, transparent)'; };
+var C=function(l,v){ return { l:l, v:v }; };
+var T=function(name){ return 'var(--cs-'+name+')'; };
+/* 조절 항목: 디자인 시스템 토큰(--cs-*)과 조절판 변수(--k-* · --dbar-*)를 덮어쓰기만 함. 원본 파일은 바뀌지 않음 */
+function R(id,label,min,max,step,def,unit,v,fn,open){ return { id:id, label:label, type:'range', min:min, max:max, step:step, def:def, unit:unit, apply:function(s,x,root){ fn ? fn(s,x,root) : s(v, x+unit); }, note:v }; }
+function S(id,label,options,v,fn){ return { id:id, label:label, type:'select', options:options, apply:function(s,x){ fn ? fn(s,x) : s(v,x); }, note:v }; }
+function REM(v){ return function(s,x){ s(v,(x/16)+'rem'); }; }
+/* 화면 ID — 묶음마다 scr 로 어느 화면 조절인지 표시 (없으면 모든 화면 공통) */
+var HOME='MOW-SC-010101', PLAN='MOW-CM-010101', MENU='MOW-SC-010103', DEH='MOW-DE-010101', WORK='MOW-CM-030101', NOTI='MOW-CM-020101', SVC='MOW-SC-010102', LOGIN='MOW-CM-000101';
+var HOMES=[HOME,DEH], TABS=[HOME,PLAN,WORK,NOTI,MENU,DEH];
+var GROUPS = [
+  { name:'공통 · 색', open:true, items:[
+    { id:'brand', label:'브랜드 파랑', type:'color', def:'#0070DC', apply:function(s,v){ s('--cs-fill-brand',v); s('--cs-text-brand','color-mix(in srgb, '+v+' 82%, #000)'); s('--cs-icon-brand',v); }, note:'fill-brand · text-brand · icon-brand' },
+    { id:'bg', label:'바탕(회색 면)', type:'color', def:'#F1F3F5', apply:function(s,v){ s('--cs-surface-muted',v); }, note:'surface-muted' },
+    { id:'ink', label:'본문 글자', type:'color', def:'#1B1F23', apply:function(s,v){ s('--cs-text-primary',v); }, note:'text-primary' },
+    { id:'sub', label:'보조 글자', type:'color', def:'#4E5358', apply:function(s,v){ s('--cs-text-secondary',v); }, note:'text-secondary' }
+  ]},
+  { name:'공통 · 글자 · 모양 · 간격', items:[
+    R('scale','전체 글자 크기',87.5,118.75,6.25,100,'%','html font-size',function(s,x,root){ root.style.fontSize=x+'%'; }),
+    R('rl','카드 반경',0,32,2,8,'px','--k-card-r'),
+    R('rm','작은 부품 반경',0,20,2,12,'px','--cs-radius-medium'),
+    S('dvc','구분선 색 (모든 화면)',[C('연한 회색 (기본)',T('border-subtle')),C('진한 회색',T('border-default')),C('없음','transparent')],'--k-div'),
+    R('btnr','버튼 둥글기 (모든 버튼)',0,28,2,8,'px','--k-btn-r-all'),
+    R('tfr','입력칸 둥글기 (모든 입력칸)',0,28,2,8,'px','--k-tf-r'),
+    S('ctl','체크박스 테두리',[C('회색 400 (기본)',T('grey-400')),C('회색 500',T('grey-500')),C('진회색 (DS 원래)',T('border-control'))],'--k-ctl-line'),
+    { id:'shadow', label:'카드 그림자(입력 화면)', type:'check', def:false, apply:function(s,v){ s('--mo-shadow', v ? '0 1px 2px rgba(10,24,64,.04), 0 6px 20px rgba(10,24,64,.06)' : 'none'); }, note:'--mo-shadow' },
+    R('density','간격 밀도',75,125,5,100,'%','--cs-space-*',function(s,x){ var base={25:2,50:4,100:8,150:12,200:16,250:20,300:24,400:32}; for (var k in base) s('--cs-space-'+k, Math.round(base[k]*x/100)+'px'); })
+  ]},
+  { name:'홈 · 머리 영역', scr:HOMES, items:[
+    S('hf','바탕 위쪽 색',[C('남색 900 (기본)',T('navy-900')),C('남색 800',T('navy-800')),C('파랑 900',T('blue-900')),C('브랜드 파랑 600',T('blue-600')),C('흰색',T('surface-screen'))],'--k-hero-from'),
+    S('ht','바탕 아래쪽 색',[C('남색 800 (기본)',T('navy-800')),C('남색 900',T('navy-900')),C('남색 700',T('navy-700')),C('파랑 800',T('blue-800')),C('흰색',T('surface-screen'))],'--k-hero-to'),
+    R('title','인사 제목 크기',20,36,1,24,'px','--k-hero-title',REM('--k-hero-title')),
+    S('ha','제목 강조색',[C('파랑 300 (기본)',T('blue-300')),C('파랑 200',T('blue-200')),C('흰색',T('static-white')),C('노랑 300',T('yellow-300'))],'--k-hero-accent'),
+    R('sr','시트 윗변 둥글기',0,40,2,12,'px','--k-sheet-r')
+  ]},
+  { name:'홈 · 시간 막대', scr:HOMES, items:[
+    R('dh','막대 높이',24,56,2,32,'px','--dbar-h'),
+    R('di','블록 위아래 여백',0,12,1,0,'px','--dbar-inset'),
+    R('dt','바탕 띠 진하기',0,30,2,8,'%','--dbar-track'),
+    R('dp','지난 시간 음영',0,30,2,16,'%','--dbar-past'),
+    S('dd','완료 블록 색',[C('회색 400 (기본)',T('grey-400')),C('흰색 28%',W(28)),C('흰색 16%',W(16)),C('흰색 40%',W(40)),C('남색 400',T('navy-400')),C('파랑 200',T('blue-200'))],'--dbar-done'),
+    S('dn','다음 방문 블록 색',[C('파랑 400 (기본)',T('blue-400')),C('파랑 300',T('blue-300')),C('파랑 500',T('blue-500')),C('브랜드 파랑 600',T('blue-600')),C('흰색',T('static-white')),C('노랑 400',T('yellow-400'))],'--dbar-next'),
+    S('dl','남은 방문 테두리 색',[C('흰색 56% (기본)',W(56)),C('흰색 32%',W(32)),C('흰색 80%',W(80)),C('파랑 300',T('blue-300')),C('회색 400',T('grey-400'))],'--dbar-later'),
+    R('dlw','남은 방문 테두리 굵기',1,3,0.5,1,'px','--dbar-line-w'),
+    S('dm','변경 테두리 색',[C('주황 400 (기본)',T('orange-400')),C('주황 300',T('orange-300')),C('노랑 400',T('yellow-400')),C('빨강 300',T('red-300'))],'--dbar-moved'),
+    R('dmw','변경 테두리 굵기',1,3,0.5,1.5,'px','--dbar-moved-w'),
+    S('dw','지금 선 색',[C('흰색 (기본)',T('static-white')),C('노랑 400',T('yellow-400')),C('파랑 300',T('blue-300')),C('빨강 300',T('red-300'))],'--dbar-now'),
+    R('dww','지금 선 굵기',1,4,1,1,'px','--dbar-now-w')
+  ]},
+  { name:'홈 · 다음 방문', scr:HOMES, items:[
+    R('nn','업체명 크기',14,24,1,16,'px','--k-next-name',REM('--k-next-name')),
+    R('bh','버튼 높이',36,56,2,44,'px','--k-btn-h'),
+    R('br','버튼 둥글기',0,28,2,8,'px','--k-btn-r')
+  ]},
+  { name:'홈 · 구역 · 구분선', scr:HOMES, items:[
+    R('sp','구역 위아래 여백',12,40,2,32,'px','--k-sec-pad'),
+    R('st','구역 제목 크기(최근 활동)',14,24,1,16,'px','--k-sec-title',REM('--k-sec-title')),
+    S('dv','구분선',[C('연한 회색 (기본)',T('border-subtle')),C('진한 회색',T('border-default')),C('없음','transparent')],'--k-divider')
+  ]},
+  { name:'홈 · 주요 서비스', scr:HOMES, items:[
+    R('si','아이콘 크기',36,56,2,44,'px','--k-svc-ic'),
+    R('sn','이름 글자 크기',12,15,1,13,'px','--k-svc-name'),
+    R('sg','줄 간격',8,32,2,20,'px','--k-svc-gap')
+  ]},
+  { name:'홈 · 최근 활동', scr:HOMES, items:[
+    R('av','아이콘 칸 크기',32,52,2,44,'px','--k-av'),
+    R('avr','아이콘 칸 둥글기',0,26,2,8,'px','--k-av-r'),
+    S('avb','아이콘 칸 바탕',[C('연남색 (기본)',T('navy-50')),C('연파랑',T('blue-50')),C('회색',T('fill-neutral')),C('연초록',T('green-100')),C('남색 900',T('navy-900'))],'--k-av-bg'),
+    S('avf','아이콘 색',[C('남색 400 (기본)',T('navy-400')),C('남색 300',T('navy-300')),C('회색 500',T('grey-500')),C('파랑',T('text-brand')),C('검정',T('text-primary')),C('흰색',T('static-white'))],'--k-av-fg'),
+    R('fn','업체명 크기',14,18,1,16,'px','--k-feed-name',REM('--k-feed-name')),
+    R('fg','제목 ↔ 첫 카드 간격',0,32,2,16,'px','--k-feed-gap')
+  ]},
+  { name:'하단 탭', scr:TABS, items:[
+    R('nh','탭 높이',52,76,2,70,'px','--k-nav-h'),
+    R('nr','탭 둥글기',0,36,2,0,'px','--k-nav-r'),
+    S('nline','바 위 구분',[C('옅은 그림자 (기본)','0 -4px 16px color-mix(in srgb, var(--cs-navy-900) 6%, transparent)'),C('없음','none'),C('연한 회색 선','0 -1px 0 var(--cs-divider)'),C('조금 진한 그림자','0 -4px 20px color-mix(in srgb, var(--cs-navy-900) 12%, transparent)')],'--k-nav-line'),
+    S('noff','선택 안 된 아이콘 색',[C('회색 400 (기본)',T('icon-inactive')),C('회색 500',T('grey-500')),C('회색 700',T('grey-700')),C('검정',T('text-primary'))],'--k-nav-off-ic'),
+    S('nw1','누를 때 1번째 색',[C('노랑 400 (기본)',T('yellow-400')),C('파랑 300',T('blue-300')),C('청록 300',T('teal-300')),C('브랜드 파랑',T('fill-brand'))],'--k-wipe-1'),
+    S('nw2','누를 때 2번째 색',[C('청록 400 (기본)',T('teal-400')),C('파랑 400',T('blue-400')),C('노랑 400',T('yellow-400')),C('브랜드 파랑',T('fill-brand'))],'--k-wipe-2'),
+    R('ni','아이콘 크기',20,30,1,24,'px','--k-nav-ic'),
+    R('nl','글자 크기',11,14,1,13,'px','--k-nav-label',REM('--k-nav-label')),
+    S('nb','선택 탭 바탕',[C('없음 (기본)','transparent'),C('남색 900',T('navy-900')),C('브랜드 파랑 600',T('blue-600')),C('연파랑',T('blue-50'))],'--k-nav-on-bg'),
+    S('nf','선택 탭 글자',[C('파랑 (기본)',T('text-brand')),C('흰색',T('static-white')),C('검정',T('text-primary'))],'--k-nav-on-fg')
+  ]},
+  { name:'상태 표시 (홈 최근 활동 · 플래너 · 업무)', scr:[HOME,PLAN,WORK], items:[
+    S('stdone','완료',[C('초록 500 (기본)',T('green-500')),C('초록 600',T('green-600')),C('초록 700',T('green-700')),C('초록 400',T('green-400'))],'--k-st-done'),
+    S('stdoing','진행중',[C('파랑 500 (기본)',T('blue-500')),C('파랑 600',T('blue-600')),C('파랑 700',T('blue-700')),C('파랑 400',T('blue-400'))],'--k-st-doing'),
+    S('stwait','대기',[C('주황 400 (기본)',T('orange-400')),C('주황 500',T('orange-500')),C('주황 600',T('orange-600')),C('주황 700',T('orange-700'))],'--k-st-wait'),
+    S('sterr','오류',[C('빨강 500 (기본)',T('red-500')),C('빨강 400',T('red-400')),C('빨강 600',T('red-600')),C('빨강 700',T('red-700'))],'--k-st-error'),
+    R('sd','점 크기',4,10,1,6,'px','--k-st-dot')
+  ]},
+  { name:'로그인', scr:[LOGIN], items:[
+    R('lt','위 여백',8,64,4,24,'px','--k-login-top'),
+    R('llg','로고 높이',16,40,2,24,'px','--k-login-logo'),
+    R('ltt','제목 크기',20,32,1,24,'px','--k-login-title',REM('--k-login-title')),
+    R('lft','제목 ↔ 입력 간격',12,56,4,24,'px','--k-login-form-top'),
+    R('lg','입력칸 사이 간격',8,24,2,12,'px','--k-login-gap'),
+    R('lth','입력칸 높이',44,60,2,52,'px','--k-login-tf-h'),
+    R('lbh','로그인 버튼 높이',44,60,2,52,'px','--k-login-btn-h')
+  ]},
+  { name:'업무 · 할 일', scr:[WORK], items:[
+    R('wtp','상단 아래 여백',8,32,2,20,'px','--k-work-top-pb'),
+    R('th','카드 높이',56,88,2,72,'px','--k-todo-h'),
+    R('tg','카드 사이 간격',4,20,2,8,'px','--k-todo-gap'),
+    S('tln','카드 테두리',[C('없음 (기본)','none'),C('연한 회색','inset 0 0 0 1px var(--cs-border-subtle)'),C('진한 회색','inset 0 0 0 1px var(--cs-border-default)')],'--k-todo-line'),
+    R('tt2','제목 크기',14,18,1,16,'px','--k-todo-title',REM('--k-todo-title')),
+    S('tw2','제목 굵기',[C('중간 600 (기본)','600'),C('보통 500','500'),C('얇게 400','400')],'--k-todo-w')
+  ]},
+  { name:'알림 · 목록', scr:[NOTI], items:[
+    R('nt','제목 크기',14,18,1,16,'px','--k-noti-title',REM('--k-noti-title')),
+    S('nuw','제목 굵기',[C('중간 600 (기본)','600'),C('굵게 700','700'),C('보통 500','500')],'--k-noti-unread-w'),
+    S('nd','안 읽음 점 색',[C('브랜드 파랑 (기본)',T('fill-brand')),C('빨강 500',T('red-500')),C('주황 400',T('orange-400'))],'--k-noti-dot'),
+    R('nic','아이콘 크기',18,32,2,24,'px','--k-noti-ic'),
+    R('npy','줄 위아래 여백',8,24,2,16,'px','--k-noti-py')
+  ]},
+  { name:'플래너 · 월 · 날짜', scr:[PLAN], items:[
+    S('ptb','상단 카드 바탕',[C('흰색 (기본)',T('surface-card')),C('회색',T('surface-muted')),C('연파랑',T('blue-50'))],'--k-plan-top-bg'),
+    R('ptr','상단 아래 둥글기',0,40,2,12,'px','--k-plan-top-r'),
+    R('ms','월 선택 글자',12,22,1,14,'px','--k-month-size',REM('--k-month-size')),
+    S('ml','월 선택 테두리',[C('연한 회색 (기본)',T('border-subtle')),C('진한 회색',T('border-default')),C('없음','transparent')],'--k-month-line'),
+    R('dnum','날짜 숫자 크기',12,24,1,16,'px','--k-day-num',REM('--k-day-num')),
+    R('dgap','요일 ↔ 숫자 간격',0,16,1,4,'px','--k-day-gap'),
+    R('dr','날짜 칸 둥글기',0,28,2,8,'px','--k-day-r'),
+    S('do','선택 날짜 바탕',[C('브랜드 파랑 (기본)',T('fill-brand')),C('남색 900',T('navy-900')),C('파랑 400',T('blue-400')),C('검정',T('text-primary'))],'--k-day-on-bg'),
+    R('dgl','선택 날짜 빛',0,48,4,24,'%','--k-day-glow'),
+    S('sun','일요일 색',[C('빨강 (기본)',T('text-danger')),C('회색',T('text-tertiary')),C('검정',T('text-primary'))],'--k-sun'),
+    S('ddot','방문 점 색',[C('브랜드 파랑 (기본)',T('fill-brand')),C('회색',T('text-tertiary')),C('주황 500',T('orange-500')),C('없음','transparent')],'--k-day-dot'),
+    R('dot','방문 점 크기',3,8,1,4,'px','--k-dot')
+  ]},
+  { name:'플래너 · 시각 · 목록', scr:[PLAN], items:[
+    R('cs','건수 제목 크기',14,26,1,18,'px','--k-count-size',REM('--k-count-size')),
+    S('cn','건수 숫자 색',[C('파랑 (기본)',T('text-brand')),C('검정',T('text-primary'))],'--k-count-num'),
+    R('tw','시각 칸 너비',36,64,2,44,'px','--k-tl-w'),
+    R('tt','시각 글자 크기',11,16,1,13,'px','--k-tl-time',REM('--k-tl-time')),
+    S('tf','시각 글자 색',[C('회색 (기본)',T('text-tertiary')),C('진회색',T('text-secondary')),C('검정',T('text-primary'))],'--k-tl-fg'),
+    S('tls','시각 선 모양',[C('없음 (기본)','none'),C('점선','dashed'),C('실선','solid')],'--k-tl-style'),
+    S('tlc','시각 선 색',[C('진한 회색 (기본)',T('border-default')),C('연한 회색',T('border-subtle')),C('파랑 200',T('blue-200'))],'--k-tl-line'),
+    R('vg','카드 사이 간격',8,40,2,16,'px','--k-visit-gap'),
+    R('vpy','카드 위아래 여백',8,28,2,16,'px','--k-visit-py'),
+    R('vpx','카드 좌우 여백',12,28,2,20,'px','--k-visit-px'),
+    S('vb','카드 바탕',[C('흰색 (기본)',T('surface-card')),C('연파랑',T('blue-50')),C('회색',T('fill-neutral'))],'--k-visit-bg')
+  ]},
+  { name:'플래너 · 업체 카드 글자', scr:[PLAN], items:[
+    R('vn','업체명 크기',14,22,1,16,'px','--k-visit-name',REM('--k-visit-name')),
+    S('vw','업체명 굵기',[C('중간 600 (기본)','600'),C('굵게 700','700'),C('보통 500','500')],'--k-visit-w'),
+    R('vt','분류 글자 크기',11,15,1,12,'px','--k-visit-type',REM('--k-visit-type')),
+    R('vm','보조 정보 크기',11,15,1,12,'px','--k-visit-meta',REM('--k-visit-meta')),
+    R('dop','완료 카드 진하기',40,100,5,100,'%','--k-done-op',function(s,x){ s('--k-done-op', String(x/100)); })
+  ]},
+  { name:'전체 · 내 정보', scr:[MENU,SVC], items:[
+    R('pp','카드 안 여백',12,28,2,20,'px','--k-prof-pad'),
+    R('pav','사진 크기',32,72,4,44,'px','--k-avatar'),
+    R('pn','이름 크기',14,26,1,16,'px','--k-prof-name',REM('--k-prof-name')),
+    R('pd','소속 글자 크기',12,16,1,14,'px','--k-prof-desc',REM('--k-prof-desc'))
+  ]},
+  { name:'전체 · 묶음 제목 · 카드', scr:[MENU,SVC], items:[
+    R('gr','묶음 제목 크기',12,20,1,16,'px','--k-group',REM('--k-group')),
+    S('gf','묶음 제목 색',[C('검정 (기본)',T('text-primary')),C('회색',T('text-tertiary')),C('진회색',T('text-secondary')),C('파랑',T('text-brand'))],'--k-group-fg'),
+    S('gw','묶음 제목 굵기',[C('중간 600 (기본)','600'),C('굵게 700','700'),C('보통 500','500')],'--k-group-w'),
+    R('gg','묶음 위 여백',12,40,2,24,'px','--k-group-gap'),
+    R('mx','카드 바깥 좌우 여백',0,32,2,16,'px','--k-menu-mx'),
+    R('mpx','카드 안 좌우 여백',12,28,2,20,'px','--k-menu-px')
+  ]},
+  { name:'전체 · 메뉴 줄', scr:[MENU,SVC], items:[
+    R('rh','줄 높이',48,80,2,64,'px','--k-row-h'),
+    R('rl2','메뉴 글자 크기',14,19,1,16,'px','--k-row-label',REM('--k-row-label')),
+    S('rw','메뉴 글자 굵기',[C('보통 400 (기본)','400'),C('중간 500','500'),C('굵게 600','600')],'--k-row-w'),
+    R('rd','설명 글자 크기',11,15,1,14,'px','--k-row-desc',REM('--k-row-desc')),
+    R('mi','아이콘 크기',18,36,2,24,'px','--k-mi'),
+    S('tile','아이콘 칸',[C('없음 (기본)','none'),C('회색 칸','grey'),C('연파랑 칸','blue'),C('흰색 테두리 칸','line')],'--k-tile-bg · pad · r',function(s,x){
+      var bg={ grey:T('fill-neutral'), blue:T('blue-50'), line:T('surface-card')+' padding-box' }[x];
+      s('--k-tile-bg', bg); s('--k-tile-pad','6px'); s('--k-tile-r','10px'); if (x==='line') s('--k-tile-line','inset 0 0 0 1px var(--cs-border-default)'); }),
+    R('rg','아이콘 ↔ 글자 간격',8,24,2,16,'px','--k-row-gap'),
+    S('dvl','구분선 시작',[C('글자부터 (기본)','text'),C('카드 끝까지','full')],'--k-div-left',function(s,x){ s('--k-div-left', x==='full' ? '0px' : ''); }),
+    R('sw','스위치 높이',24,32,1,28,'px','--k-sw-h'),
+    S('out','로그아웃 위치',[C('오른쪽 (기본)','flex-end'),C('가운데','center'),C('왼쪽','flex-start')],'--k-out-justify'),
+    S('chev','오른쪽 화살표 색',[C('연회색 (기본)',T('text-disabled')),C('회색',T('text-tertiary')),C('검정',T('text-primary')),C('없음','transparent')],'--k-chev')
+  ]}
+];
+var KEY='cesco-playground-v16', state={};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { state = {}; }
+var all=[]; GROUPS.forEach(function(g){ g.items.forEach(function(i){ if (i.type==='select') i.def=i.options[0].v; all.push(i); if (!(i.id in state)) state[i.id]=i.def; }); });
+
+/* 패널 만들기 */
+var box=document.getElementById('controls'), scrBox=document.getElementById('scrBox'), showAll=false;
+GROUPS.forEach(function(g){
+  var fs=document.createElement('details'); fs.className='grp'; if (g.open) fs.open=true; fs.innerHTML='<summary>'+g.name+'<small></small></summary>';
+  g.el=fs; g.items.forEach(function(i){ i.group=g.name; });
+  g.items.forEach(function(i){
+    var r=document.createElement('div'); r.className='row'; r.dataset.id=i.id; r.title=i.note;
+    var input = i.type==='select' ? '<select id="c-'+i.id+'">'+i.options.map(function(o){ return '<option value="'+o.v+'">'+o.l+'</option>'; }).join('')+'</select>'
+              : i.type==='range' ? '<input type="range" id="c-'+i.id+'" min="'+i.min+'" max="'+i.max+'" step="'+i.step+'">'
+              : i.type==='color' ? '<input type="color" id="c-'+i.id+'">' : '<input type="checkbox" id="c-'+i.id+'">';
+    r.innerHTML='<label for="c-'+i.id+'">'+i.label+'</label>'+input+'<output></output>';
+    fs.appendChild(r);
+    var el=r.querySelector('input, select');
+    if (i.type==='check') el.checked=!!state[i.id]; else el.value=state[i.id];
+    el.addEventListener('input', function(){ state[i.id] = i.type==='check' ? el.checked : (i.type==='range' ? Number(el.value) : el.value); sync(); });
+  });
+  (g.scr ? scrBox : box).appendChild(fs);
+});
+/* 화면별 묶음: 고른 화면에 해당하는 묶음만 「이 화면」에 보이고, 「모든 묶음」이면 다른 화면 것도 보임 */
+function scope(){
+  var n=0, cur=sel.value, name=(SCREENS.find(function(x){ return x.id===cur; })||{}).name||cur;
+  GROUPS.forEach(function(g){ if (!g.scr) return; var mine=g.scr.indexOf(cur)>-1; g.el.hidden = !(mine || showAll); if (mine) n++;
+    if (mine && !g.el.dataset.seen) { g.el.open=true; g.el.dataset.seen='1'; } });
+  document.getElementById('secScr').textContent = showAll ? '화면별 묶음 (전부)' : '이 화면 · '+name;
+  document.getElementById('noneScr').hidden = n>0 || showAll;
+}
+[['scopeScr',false],['scopeAll',true]].forEach(function(p){ document.getElementById(p[0]).addEventListener('click', function(){
+  showAll=p[1]; document.getElementById('scopeScr').setAttribute('aria-pressed', !showAll); document.getElementById('scopeAll').setAttribute('aria-pressed', showAll); scope(); }); });
+
+/* 화면 · 폭 */
+var sel=document.getElementById('screen'), phones=document.getElementById('phones'), mode='390';
+SCREENS.forEach(function(s){ var o=document.createElement('option'); o.value=s.id; o.textContent=s.name+' · '+s.id; sel.appendChild(o); });
+function frames(){
+  phones.innerHTML='';
+  (mode==='both' ? [390,360] : [Number(mode)]).forEach(function(w){
+    var p=document.createElement('div'); p.className='phone';
+    p.innerHTML='<iframe title="'+w+' 미리보기" style="width:'+w+'px" src="www/html/'+sel.value+'.html"></iframe><span>'+w+' × 844</span>';
+    p.querySelector('iframe').addEventListener('load', function(){ paint(this); });
+    phones.appendChild(p);
+  });
+}
+sel.addEventListener('change', function(){ frames(); push(); scope(); try { localStorage.setItem(KEY+'-screen', sel.value); } catch (e) {} });
+try { var last=localStorage.getItem(KEY+'-screen'); if (last && SCREENS.some(function(x){ return x.id===last; })) sel.value=last; } catch (e) {}
+document.querySelectorAll('[data-w]').forEach(function(b){ b.addEventListener('click', function(){ mode=b.dataset.w; document.querySelectorAll('[data-w]').forEach(function(x){ x.setAttribute('aria-pressed', x===b); }); frames(); }); });
+
+/* 값 적용: iframe 안 html · body 에 덮어쓰기 (폰 미러에도 같은 값을 보냄) */
+function collect(){
+  var o={ vars:{}, rootFont:'' }, rootStub={ style:{} };
+  all.forEach(function(i){ if (state[i.id]===i.def) return; i.apply(function(k,v){ o.vars[k]=v; }, state[i.id], rootStub); });
+  o.rootFont = rootStub.style.fontSize || ''; return o;
+}
+function paint(f){
+  var d; try { d=f.contentDocument; } catch (e) { return; } if (!d || !d.body) return;
+  var o=collect();
+  d.body.removeAttribute('style'); d.documentElement.style.fontSize=o.rootFont;
+  for (var k in o.vars) d.body.style.setProperty(k, o.vars[k]);
+}
+var SYNC='http://'+location.hostname+':8790', pushT, LOCAL=location.protocol==='http:';   /* 공개본(https · GitHub Pages)에서는 폰 연동 서버에 접속하지 않음 */
+function push(){ if (!LOCAL) return; clearTimeout(pushT); pushT=setTimeout(function(){ var o=collect(); o.screen=sel.value;
+  fetch(SYNC+'/overrides',{ method:'POST', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(o) }).then(function(){ link(true); }, function(){ link(false); }); }, 120); }
+function link(ok){ var el=document.getElementById('phone'); if (!el) return; el.dataset.ok = ok ? '1' : '0'; }
+if (!LOCAL) { var pe=document.getElementById('phone'); if (pe) pe.textContent='공개본 — 폰 실시간 연동은 로컬 미리보기에서만 돼요'; }
+else fetch(SYNC+'/info').then(function(r){ return r.json(); }).then(function(j){
+  var ip=(j.ips||[])[0]; var el=document.getElementById('phone'); if (!el || !ip) return;
+  el.innerHTML='폰 실시간 보기: <b>http://'+ip+':8080/mirror.html</b>'; link(true);
+}).catch(function(){ link(false); });
+
+function sync(){
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  phones.querySelectorAll('iframe').forEach(paint); push();
+  var lines=[];
+  document.querySelectorAll('.row').forEach(function(r){
+    var i=all.find(function(x){ return x.id===r.dataset.id; }), v=state[i.id], ch = v!==i.def;
+    r.classList.toggle('changed', ch);
+    var lab = function(val){ var o=(i.options||[]).find(function(x){ return x.v===val; }); return o ? o.l : val; };
+    r.querySelector('output').textContent = i.type==='select' ? '' : i.type==='check' ? (v?'켬':'끔') : i.type==='range' ? v+i.unit : String(v).toUpperCase();
+    if (ch) lines.push('- ['+i.group+'] '+i.label+' ('+i.note+'): '+(i.type==='check'?(i.def?'켬':'끔'):i.type==='select'?lab(i.def):i.def+(i.unit||''))+' → '+(i.type==='check'?(v?'켬':'끔'):i.type==='select'?lab(v):v+(i.unit||'')));
+  });
+  GROUPS.forEach(function(g){ var c=g.items.filter(function(i){ return state[i.id]!==i.def; }).length; g.el.querySelector('summary small').textContent = c ? c+'개 바꿈' : ''; });
+  document.getElementById('diff').textContent = lines.length ? '화면: '+sel.value+'\n'+lines.join('\n') : '바뀐 값 없음';
+}
+document.getElementById('copy').addEventListener('click', function(){
+  var t='[플레이그라운드] 아래 값으로 원본에 반영해줘\n'+document.getElementById('diff').textContent;
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('복사했어요 — 채팅에 붙여넣으세요'); }, function(){ toast('복사가 막혔어요 — 아래 글을 직접 복사하세요'); });
+});
+function resetItems(list){ list.forEach(function(i){ state[i.id]=i.def; var el=document.getElementById('c-'+i.id); if (i.type==='check') el.checked=i.def; else el.value=i.def; }); sync(); }
+document.getElementById('resetScr').addEventListener('click', function(){
+  var list=[]; GROUPS.forEach(function(g){ if (g.scr && g.scr.indexOf(sel.value)>-1) list=list.concat(g.items); });
+  if (!list.length) { toast('이 화면 전용 묶음이 없어요'); return; } resetItems(list); toast('이 화면 묶음을 처음 값으로 돌렸어요');
+});
+document.getElementById('reset').addEventListener('click', function(){
+  all.forEach(function(i){ state[i.id]=i.def; var el=document.getElementById('c-'+i.id); if (i.type==='check') el.checked=i.def; else el.value=i.def; }); sync(); toast('처음 값으로 돌렸어요');
+});
+var tt; function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){ t.classList.remove('on'); }, 2200); }
+frames(); scope(); sync();
+</script>
+</body>
+</html>

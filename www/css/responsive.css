@@ -1,34 +1,13 @@
-/* 세스코 모바일 오피스 — 반응형 (2026-11-18)
- * 단일 마크업. 화면을 따로 만들지 않고 같은 HTML을 폭에 따라 바꾼다 (KOSA 챗봇 퍼블과 같은 원칙, 기준만 모바일).
- *   기준 시안 : 모바일 390 × 844 · 최소 360
- *   ~767      : 모바일 — 폭 100% 유동 (예전 480 고정 해제)
- *   768~      : 태블릿 · PC — 구조는 모바일 그대로(상단 · 하단 탭), 칸 수만 늘림
- *   1024~     : 앱 폭 1024 고정 · 가운데 정렬, 바깥은 회색 바탕
- * 확인 폭: 360 · 390 · 768 · 1024 · 1440
- * 노출 제어: .mo-m-only = 767 이하에서만, .mo-p-only = 768 이상에서만
+/* 세스코 모바일 오피스 — 화면 폭 (2026-11-18 사용자: 흔히 쓰는 모바일 폭으로)
+ * 단일 마크업 · 모바일 전용.
+ *   기준 시안 : 390 × 844 · 최소 360
+ *   360~480   : 폭 100% 유동
+ *   481~      : 480 고정 · 가운데 정렬, 바깥은 회색 바탕 (태블릿 · PC에서도 모바일 화면 그대로)
+ * 확인 폭: 360 · 390 · 430 · 480
  */
-.mo-app { max-width:none; }
-.mo-p-only { display:none !important; }
+.mo-app { max-width:480px; margin:0 auto; }
 
-@media (min-width:768px) {
-  .mo-m-only { display:none !important; }
-  .mo-p-only { display:revert !important; }
-
-  /* 홈 (SC · DE): 머리 · 서비스 · 최근 활동은 한 줄 전체, 다음 방문 | 근무 · 계약은 나란히 */
-  .mo-app:has(.mo-home) .mo-home { display:grid; grid-template-columns:minmax(0, 3fr) minmax(0, 2fr); align-content:start; }
-  .mo-app:has(.mo-home) .mo-home > * { grid-column:1 / -1; }
-  .mo-app:has(.mo-home) .mo-home > .mo-next { grid-column:1; }
-  .mo-app:has(.mo-home) .mo-home > .mo-next + .mo-sum { grid-column:2; align-self:stretch; display:flex; flex-direction:column; justify-content:center; }
-  .mo-app:has(.mo-home) .mo-home > .mo-next + .mo-sum::before { top:var(--cs-space-300); bottom:var(--cs-space-300); left:0; right:auto; width:1px; height:auto; }   /* 나란히 놓이면 구분선 = 세로선 */
-  .mo-page .mo-app:has(.mo-home) .mo-home > .mo-card { border-radius:0; }   /* 나란히 놓인 카드 모서리 사이로 바탕이 비치지 않게 (홈 카드는 구분선으로 나뉘는 면) */
-  .mo-app:has(.mo-home) .mo-home .mo-svc:not(.mo-svc--5) { grid-template-columns:repeat(8, minmax(0, 1fr)); }   /* DE 빠른 실행(5칸)은 그대로 5칸 */
-
-  /* 로그인: 폼이 화면 폭만큼 늘어나지 않게 가운데 좁은 단 */
-  .mo-login { width:100%; max-width:440px; margin-inline:auto; }
-  .mo-app:has(.mo-home) .mo-home .mo-zone .mo-feed__list { grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); }
-}
-
-@media (min-width:1024px) {
+@media (min-width:481px) {
   body.mo-page { background:var(--cs-surface-muted); }
-  .mo-app { max-width:1024px; margin:0 auto; box-shadow:0 0 0 1px var(--cs-divider); }
+  .mo-app { box-shadow:0 0 0 1px var(--cs-divider); }
 }

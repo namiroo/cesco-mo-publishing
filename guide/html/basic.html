@@ -32,8 +32,8 @@
 <table class="gd-table">
   <tr><th>구현 형태</th><td>하이브리드 앱 웹뷰 가정 (PRD Q-25 미정). 산출물은 HTML · CSS · 최소한의 JS입니다.</td></tr>
   <tr><th>지원 환경</th><td>iOS 15 이상 · Android 10 이상 (PRD A 4.5)</td></tr>
-  <tr><th>화면 구성</th><td><b>반응형 · 단일 마크업</b> — 기기별 화면을 따로 만들지 않고 같은 HTML을 폭에 따라 바꿉니다(<code>www/css/responsive.css</code>).</td></tr>
-  <tr><th>기준 해상도 / 분기점</th><td>모바일 시안 390 × 844 · 최소 지원 폭 360<br>· 767px 이하 = 모바일 — 폭 100% 유동<br>· 768px 이상 = 태블릿 · PC — 구조(상단 · 하단 탭)는 모바일 그대로, 칸 수만 늘림 (예: 홈 2단 · 주요 서비스 8칸 한 줄)<br>· 1024px 이상 = 앱 폭 1024 고정 · 가운데 정렬<br>· 확인 폭: 360 · 390 · 768 · 1024 · 1440 (Chrome) · 노출 제어 <code>.mo-m-only</code> · <code>.mo-p-only</code></td></tr>
+  <tr><th>화면 구성</th><td>모바일 전용 · 단일 마크업 (<code>www/css/responsive.css</code>)</td></tr>
+  <tr><th>기준 해상도</th><td>시안 390 × 844 · 최소 지원 폭 360<br>· 360~480px = 폭 100% 유동<br>· 480px 초과 = 480 고정 · 가운데 정렬 (태블릿 · PC에서도 모바일 화면 그대로)<br>· 확인 폭: 360 · 390 · 430 · 480</td></tr>
   <tr><th>안전 영역</th><td><code>viewport-fit=cover</code> + <code>env(safe-area-inset-*)</code>로 상단 상태 표시줄 · 하단 홈 표시줄을 피합니다.</td></tr>
   <tr><th>글꼴</th><td>Pretendard Variable을 <b>로컬 파일</b>로 넣었습니다(<code>www/fonts</code>, 486KB, OFL 라이선스 동봉). 한글 KS X 1001 2,350자 + 영문 · 숫자 · 기호. 그 밖의 글자는 시스템 글꼴로 표시되며, 필요하면 전체 글꼴(약 2MB)로 바꿀 수 있습니다. 외부 CDN 의존은 없습니다.</td></tr>
 </table>

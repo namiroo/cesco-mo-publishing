@@ -1,0 +1,15 @@
+{
+  "profile": {
+    "name": "김민준",
+    "role": "SC",
+    "branch": "강남지사",
+    "team": "영업2팀",
+    "avatar_url": null
+  },
+  "privacy": {
+    "show_work_hours": true,
+    "show_contract_amount": true,
+    "block_capture": true
+  },
+  "favorite_count": 8
+}

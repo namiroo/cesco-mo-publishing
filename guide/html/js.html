@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>app.js 동작 | 세스코 모바일 오피스 Mark-up Guide</title>
+<link rel="stylesheet" href="../../www/css/font.css">
+<link rel="stylesheet" href="../../www/css/cesco-ui.css">
+<link rel="stylesheet" href="../css/guide.css">
+</head>
+<body class="gd">
+<header class="gd-head"><p>세스코 모바일 오피스 Mark-up Guide</p><h1>app.js 동작</h1></header>
+<main class="gd-body">
+<h2>1. 원칙</h2>
+<ul class="gd-list">
+  <li>스크립트는 세 개, 외부 라이브러리 없음: <code>app.js</code> 화면 동작 · <code>data.js</code> 데이터 계층 · <code>render.js</code> 데이터 → 화면(데이터 화면만 불러옴). 아래 목록은 app.js입니다.</li>
+  <li><code>app.js</code>는 화면이 바로 보이도록 <b>모양 · 상태 전환만</b> 담당합니다.</li>
+  <li>상태는 클래스(<code>is-on</code> · <code>is-active</code> · <code>is-stuck</code> 등)와 aria 속성으로만 바꿉니다. 개발 프레임워크로 옮길 때 같은 클래스 · 속성을 상태 값에 연결하면 됩니다.</li>
+  <li><code>app.js</code>는 데이터를 다루지 않습니다. 조회와 화면 갱신은 <code>data.js</code> · <code>render.js</code>가 맡고, <b>저장 · 로그인 검증 API 연결이 개발에서 붙일 자리</b>입니다 — 데이터 명세 · 화면 상태 페이지 참고.</li>
+  <li>동작을 거는 표시는 <code>data-*</code> 속성입니다(예: <code>data-edit</code> · <code>data-read-all</code> · <code>data-toast</code>). 클래스 이름을 바꿔도 동작이 깨지지 않습니다.</li>
+</ul>
+<h2>2. 동작 목록 (13)</h2><table class="gd-table gd-table--list"><thead><tr><th>No</th><th>동작</th></tr></thead><tbody><tr><td>1</td><td>상단 고정 영역: 스크롤되면 아래 선</td></tr><tr><td>2</td><td>스위치: 행 전체가 누르는 영역</td></tr><tr><td>3</td><td>세그먼트 · 탭: 하나만 선택</td></tr><tr><td>4</td><td>체크박스: 입력 상태를 is-on 으로</td></tr><tr><td>5</td><td>체감효과 5단계 슬라이더</td></tr><tr><td>6</td><td>서명</td></tr><tr><td>7</td><td>가림 정보 보기 · 다시 가리기: data-reveal (aria-pressed)</td></tr><tr><td>8</td><td>순서 편집 모드: data-edit 켜기 · data-edit-cancel / data-edit-done 끄기 (끌어 놓기 · 저장은 개발에서)</td></tr><tr><td>9</td><td>알림: 모두 읽음</td></tr><tr><td>10</td><td>칩 묶음(role=radiogroup): 하나만 선택 — 선택 = is-active (DS: 연파랑 바탕 · 파란 글자)</td></tr><tr><td>11</td><td>비밀번호 보기</td></tr><tr><td>12</td><td>하단 탭: 누르면 아이콘이 채워지는 애니메이션(0.46초)을 보여 준 뒤 이동</td></tr><tr><td>13</td><td>알림 띠: data-toast=&quot;문구&quot;</td></tr></tbody></table>
+</main>
+</body>
+</html>

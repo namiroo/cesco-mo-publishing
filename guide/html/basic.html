@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>기본결정사항 | 세스코 모바일 오피스 Mark-up Guide</title>
+<link rel="stylesheet" href="../../www/css/font.css">
+<link rel="stylesheet" href="../../www/css/cesco-ui.css">
+<link rel="stylesheet" href="../css/guide.css">
+</head>
+<body class="gd">
+<header class="gd-head"><p>세스코 모바일 오피스 Mark-up Guide</p><h1>기본결정사항</h1></header>
+<main class="gd-body">
+<h2>1. 범위 · 일정</h2>
+<table class="gd-table">
+  <tr><th>1차 (모바일 사례)</th><td>2026.11.18 · 주요 화면 <b>10개</b> 퍼블리싱 완료 (기획한 화면 · 상태 34개 중)</td></tr>
+  <tr><th>이번 차수의 목적</th><td>디자인 시스템 → 화면 디자인 → 퍼블리싱 → 개발로 <b>끊김 없이 이어지는지</b> 주요 화면으로 보여 주는 사례입니다. 화면마다 데이터 자리와 상태(빈 상태 · 불러오는 중 · 오류)를 함께 정의해, 그대로 개발에 붙일 수 있는 수준을 목표로 합니다.</td></tr>
+  <tr><th>범위 밖</th><td>협력업체 흐름 4화면 · 처리 완료 등록(보류) · 나머지 상태 화면 · 다크 모드. 코딩진행표에 회색(미작업) · 보류로 표시합니다.</td></tr>
+</table>
+
+<h2>2. 원본 디자인</h2>
+<table class="gd-table">
+  <tr><th>디자인 시스템</th><td>세스코 디자인 시스템 v0.8 (2026.11.18). 토큰 · 부품 · 아이콘이 <code>www/css/cesco-ui.css</code> · <code>www/js/icons.js</code>로 들어 있습니다.</td></tr>
+  <tr><th>Figma</th><td>세스코 Figma 파일 — 색 · 글자 변수, 텍스트 스타일, 아이콘 컴포넌트. 접근 권한은 디자인 팀에 요청해 주세요.</td></tr>
+  <tr><th>화면 원본</th><td>디자인 팀 원본(화면 조각 · app.css · app.js)에서 빌드 도구가 <code>www/</code>를 생성합니다. <b>www를 직접 고치지 말고</b>, 수정이 필요하면 이슈로 요청해 주세요. 원본에 반영한 뒤 다시 전달합니다.</td></tr>
+</table>
+
+<h2>3. 화면 ID 체계</h2>
+<table class="gd-table"><tr><th>형식</th><td><code>MOW-{업무}-{대}{중}{소}</code></td></tr><tr><th>플랫폼</th><td><code>MOW</code> 모바일 웹 (하이브리드 앱 웹뷰 가정)</td></tr><tr><th>업무</th><td><code>CM</code> 공통 · <code>SC</code> 영업 (SC) · <code>DE</code> 기술 (DE) · <code>PT</code> 협력업체 파트너</td></tr><tr><th>상태 접미사</th><td><code>P</code> 팝업 · 바텀시트 · <code>E</code> 빈 상태 · <code>L</code> 불러오는 중 · <code>X</code> 오류 · 오프라인 (여러 개면 X1 · X2)</td></tr></table>
+
+<h2>4. 플랫폼 · 해상도 · 지원 환경</h2>
+<table class="gd-table">
+  <tr><th>구현 형태</th><td>하이브리드 앱 웹뷰 가정 (PRD Q-25 미정). 산출물은 HTML · CSS · 최소한의 JS입니다.</td></tr>
+  <tr><th>지원 환경</th><td>iOS 15 이상 · Android 10 이상 (PRD A 4.5)</td></tr>
+  <tr><th>기준 해상도</th><td>시안 390 × 844 · 최소 지원 폭 360 · 480 초과 시 <code>.mo-app</code>이 480으로 고정되고 가운데 정렬됩니다(PC 확인용).</td></tr>
+  <tr><th>안전 영역</th><td><code>viewport-fit=cover</code> + <code>env(safe-area-inset-*)</code>로 상단 상태 표시줄 · 하단 홈 표시줄을 피합니다.</td></tr>
+  <tr><th>글꼴</th><td>Pretendard Variable을 <b>로컬 파일</b>로 넣었습니다(<code>www/fonts</code>, 486KB, OFL 라이선스 동봉). 한글 KS X 1001 2,350자 + 영문 · 숫자 · 기호. 그 밖의 글자는 시스템 글꼴로 표시되며, 필요하면 전체 글꼴(약 2MB)로 바꿀 수 있습니다. 외부 CDN 의존은 없습니다.</td></tr>
+</table>
+
+<h2>5. 코딩 규칙</h2>
+<table class="gd-table">
+  <tr><th>클래스 접두사</th><td><code>cs-</code> · <code>ui-</code> 디자인 시스템 (고치지 않음) / <code>mo-</code> 화면 전용 (app.css) / <code>is-</code> · <code>has-</code> 상태. 이 밖의 클래스는 빌드 검사에서 막힙니다.</td></tr>
+  <tr><th>색 · 간격 · 반경</th><td>모두 토큰 <code>var(--cs-*)</code>만 씁니다. app.css에 직접 쓴 색(#hex · rgb)과 px 반경은 없습니다.</td></tr>
+  <tr><th>아이콘</th><td><code>&lt;svg class="cs-icon" aria-hidden="true"&gt;&lt;use href="#cs-i-이름"/&gt;&lt;/svg&gt;</code> — 아이콘 목록 페이지 참고</td></tr>
+  <tr><th>접근성</th><td>모든 <code>button</code>에 <code>type</code>, 이미지에 <code>alt</code>, 장식 아이콘 <code>aria-hidden</code>, 상태는 <code>aria-checked</code> · <code>aria-selected</code> · <code>aria-current</code> · <code>aria-pressed</code>로 함께 표시합니다. 화면 제목(h1)은 낭독용으로 숨겨 둔 화면이 있습니다(<code>cs-sr-only</code>).</td></tr>
+  <tr><th>아직 없는 화면</th><td>링크에 <code>data-todo</code>가 붙어 있고, 누르면 「준비 중」 알림이 뜹니다. 개발 때 실제 경로로 바꿉니다.</td></tr>
+</table>
+
+</main>
+</body>
+</html>

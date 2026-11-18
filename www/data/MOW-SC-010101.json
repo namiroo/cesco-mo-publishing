@@ -1,0 +1,119 @@
+{
+  "as_of": "2026-11-16T12:10:00+09:00",
+  "user": {
+    "name": "김민준",
+    "role": "SC"
+  },
+  "visits_today": [
+    {
+      "id": "v-3001",
+      "customer_name": "한빛식당",
+      "start_at": "2026-11-16T09:00:00+09:00",
+      "end_at": "2026-11-16T10:00:00+09:00",
+      "status": "done",
+      "moved_from": null
+    },
+    {
+      "id": "v-3002",
+      "customer_name": "마루베이커리",
+      "start_at": "2026-11-16T14:00:00+09:00",
+      "end_at": "2026-11-16T15:00:00+09:00",
+      "status": "next",
+      "moved_from": null
+    },
+    {
+      "id": "v-3003",
+      "customer_name": "그린마트",
+      "start_at": "2026-11-16T16:30:00+09:00",
+      "end_at": "2026-11-16T17:30:00+09:00",
+      "status": "later",
+      "moved_from": "2026-11-16T15:30:00+09:00"
+    }
+  ],
+  "next_visit": {
+    "visit_id": "v-3002",
+    "customer_name": "마루베이커리",
+    "start_at": "2026-11-16T14:00:00+09:00",
+    "service_type": "위생 진단",
+    "address_short": "서울 서초구 서초동",
+    "last_visit_at": "2026-10-14",
+    "phone": "02-000-0000",
+    "lat": 37.4919,
+    "lng": 127.0076
+  },
+  "work_week": {
+    "worked_hours": 32,
+    "target_hours": 40,
+    "visible": true
+  },
+  "contract_month": {
+    "amount": 12400000,
+    "target": 15900000,
+    "visible": true
+  },
+  "home_services": [
+    {
+      "key": "contract",
+      "name": "계약 등록",
+      "target_screen": null
+    },
+    {
+      "key": "customer",
+      "name": "고객 조회",
+      "target_screen": null
+    },
+    {
+      "key": "planner",
+      "name": "SOL 플래너",
+      "target_screen": "MOW-CM-010101"
+    },
+    {
+      "key": "quote",
+      "name": "견적서",
+      "target_screen": null
+    },
+    {
+      "key": "history",
+      "name": "방제 이력",
+      "target_screen": null
+    },
+    {
+      "key": "effect",
+      "name": "체감효과",
+      "target_screen": null
+    },
+    {
+      "key": "settle",
+      "name": "정산",
+      "target_screen": null
+    },
+    {
+      "key": "notice",
+      "name": "공지사항",
+      "target_screen": null
+    }
+  ],
+  "recent_activities": [
+    {
+      "id": "a-4001",
+      "customer_name": "한빛식당 강남점",
+      "action": "정기 방제 계약 등록",
+      "at": "2026-11-16T09:12:00+09:00",
+      "status": "done"
+    },
+    {
+      "id": "a-4002",
+      "customer_name": "그린마트 역삼점",
+      "action": "재계약 일정 협의 통화",
+      "at": "2026-11-15T16:40:00+09:00",
+      "status": "doing"
+    },
+    {
+      "id": "a-4003",
+      "customer_name": "서울푸드 본사",
+      "action": "견적서 발송",
+      "at": "2026-11-09T10:20:00+09:00",
+      "status": "wait"
+    }
+  ]
+}

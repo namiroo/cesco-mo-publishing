@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F1F3F5">
+<title>전체 | MOW-SC-010103 | 세스코 모바일 오피스</title>
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/cesco-ui.css">
+<link rel="stylesheet" href="../css/app.css">
+<script src="../js/icons.js"></script>
+</head>
+<body class="mo-page">
+<!-- MOW-SC-010103 전체 · 생성물 — 원본 03_디자인/screens/MOW-SC-010103.html 을 고친 뒤 python3 tools/build.py -->
+<div class="mo-app">
+<div class="mo-top mo-top--bare"><h1 class="cs-sr-only">전체</h1></div>
+
+<main class="mo-main mo-menu">
+  <section class="mo-hero mo-hero--light" aria-label="내 정보">
+    <a class="mo-profile" href="#" data-todo>
+      <span class="mo-avatar"><svg class="mo-art" viewBox="0 0 60 60" width="60" height="60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="#F2F3F5"/><path fill="#CCCED6" fill-rule="evenodd" clip-rule="evenodd" d="M30 28.5c3.728 0 6.75-3.022 6.75-6.75S33.728 15 30 15s-6.75 3.022-6.75 6.75 3.022 6.75 6.75 6.75zm-4.5 3c-4.142 0-7.5 3.358-7.5 7.5v3a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3v-3c0-4.142-3.358-7.5-7.5-7.5h-9z"/></svg></span>
+      <span class="mo-profile__text">
+        <span class="mo-profile__name">김민준</span>
+        <span class="mo-profile__desc">SC · 강남지사 영업2팀</span>
+      </span>
+      <svg class="cs-icon" aria-hidden="true"><use href="#cs-i-chevron-right"/></svg>
+    </a>
+  </section>
+
+  <h2 class="mo-group" id="secPriv">개인정보 공개 설정</h2>
+  <section class="mo-card mo-card--list" aria-labelledby="secPriv">
+    <div class="ui-cell-list ui-cell-list--divider mo-list">
+      <div class="ui-cell ui-cell--full ui-cell--l">
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.5" fill="#8B7FE8"/><path d="M12 7v5.2h3.6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>근무시간 표시</span></span><span class="ui-cell__desc">홈의 이번 주 근무 카드</span></span>
+        <span class="ui-cell__trail"><button class="ui-sw ui-sw--m is-on" type="button" role="switch" aria-checked="true" aria-label="근무시간 표시"></button></span>
+      </div>
+      <div class="ui-cell ui-cell--full ui-cell--l">
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="3" fill="#5B8DEF"/><rect x="2.5" y="8.3" width="19" height="2.8" fill="#2F5FC4"/><rect x="5.5" y="14" width="5" height="2" rx="1" fill="#fff"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>계약 달성 금액 표시</span></span><span class="ui-cell__desc">홈의 이번 달 계약 카드</span></span>
+        <span class="ui-cell__trail"><button class="ui-sw ui-sw--m is-on" type="button" role="switch" aria-checked="true" aria-label="계약 달성 금액 표시"></button></span>
+      </div>
+      <div class="ui-cell ui-cell--full ui-cell--l">
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5l7.5 2.8v6.1c0 4.9-3.2 8.8-7.5 10.6-4.3-1.8-7.5-5.7-7.5-10.6V5.3z" fill="#6A7F99"/><path d="M8.6 11.8l2.4 2.4 4.4-4.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>민감 정보 화면 캡처 방지</span></span><span class="ui-cell__desc">근무시간 · 계약 금액이 보이는 화면</span></span>
+        <span class="ui-cell__trail"><button class="ui-sw ui-sw--m is-on" type="button" role="switch" aria-checked="true" aria-label="민감 정보 화면 캡처 방지"></button></span>
+      </div>
+    </div>
+  </section>
+  <p class="mo-note">설정은 계정에 저장돼요. 기기를 바꿔도 그대로 유지돼요.</p>
+
+  <h2 class="mo-group" id="secMenu">나의 메뉴</h2>
+  <section class="mo-card mo-card--list" aria-labelledby="secMenu">
+    <div class="ui-cell-list ui-cell-list--divider mo-list">
+      <a class="ui-cell ui-cell--full ui-cell--l" href="#" data-todo>
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.8l2.75 5.6 6.15.9-4.45 4.33 1.05 6.12L12 16.87l-5.5 2.88 1.05-6.12L3.1 9.3l6.15-.9z" fill="#F5BE57" stroke="#F5BE57" stroke-width="1" stroke-linejoin="round"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>즐겨찾기 메뉴</span></span></span>
+        <span class="ui-cell__trail">8개</span><svg class="cs-icon ui-cell__chev" aria-hidden="true"><use href="#cs-i-chevron-right"/></svg>
+      </a>
+      <a class="ui-cell ui-cell--full ui-cell--l" href="MOW-SC-010102.html">
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3.5" width="18" height="17" rx="3.5" fill="#52AE9C"/><path d="M7.5 9h9M7.5 12.5h9M7.5 16h5.5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>주요 서비스 순서</span></span></span>
+        <svg class="cs-icon ui-cell__chev" aria-hidden="true"><use href="#cs-i-chevron-right"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <h2 class="mo-group" id="secApp">앱</h2>
+  <section class="mo-card mo-card--list" aria-labelledby="secApp">
+    <div class="ui-cell-list ui-cell-list--divider mo-list">
+      <a class="ui-cell ui-cell--full ui-cell--l" href="MOW-CM-020101.html">
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6.4 6.4 0 0 1 6.4 6.4v3.6l1.7 2.7a.9.9 0 0 1-.76 1.4H4.66a.9.9 0 0 1-.76-1.4L5.6 13V9.4A6.4 6.4 0 0 1 12 3z" fill="#F29B4B"/><path d="M9.6 18.9h4.8a2.4 2.4 0 0 1-4.8 0z" fill="#F29B4B"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>알림 설정</span></span></span>
+        <svg class="cs-icon ui-cell__chev" aria-hidden="true"><use href="#cs-i-chevron-right"/></svg>
+      </a>
+      <div class="ui-cell ui-cell--full ui-cell--l">
+        <span class="ui-cell__lead"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.5" fill="#9AA1AB"/><circle cx="12" cy="7.9" r="1.4" fill="#fff"/><rect x="10.9" y="10.6" width="2.2" height="6.4" rx="1.1" fill="#fff"/></svg></span><span class="ui-cell__text"><span class="ui-cell__label"><span>앱 버전</span></span></span>
+        <span class="ui-cell__trail mo-ver">1.0.0</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="mo-out"><a class="ui-tbtn ui-tbtn--neutral ui-tbtn--s" href="MOW-CM-000101.html">로그아웃</a></p>
+</main>
+<div class="mo-bottom">
+<nav class="ui-bnav" aria-label="주요 메뉴">
+  <a class="ui-bnav__tab" href="MOW-SC-010101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-home"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-home-fill"/></svg></span><span>홈</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-010101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-calendar"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg></span><span>플래너</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-030101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-report"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-report-fill"/></svg></span><span>업무</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-020101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-bell"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg></span><span>알림</span></a>
+  <a class="ui-bnav__tab is-active" href="MOW-SC-010103.html" aria-current="page"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-menu"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg></span><span>전체</span></a>
+</nav>
+</div>
+</div>
+<div class="mo-toast" aria-live="polite"><div class="ui-toast ui-toast--success" role="status"><svg class="cs-icon ui-toast__icon" aria-hidden="true"><use href="#cs-i-check"/></svg><span></span></div></div>
+<script src="../js/app.js"></script>
+</body>
+</html>

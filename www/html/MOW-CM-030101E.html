@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<title>업무 (오늘 할 일) · 할 일 없음 | MOW-CM-030101E | 세스코 모바일 오피스</title>
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/cesco-ui.css">
+<link rel="stylesheet" href="../css/app.css">
+<script src="../js/icons.js"></script>
+</head>
+<body class="mo-page" data-force-state="empty">
+<!-- MOW-CM-030101E 업무 (오늘 할 일) · 할 일 없음 · 생성물 — 원본 03_디자인/screens/MOW-CM-030101E.html 을 고친 뒤 python3 tools/build.py -->
+<div class="mo-app">
+<div class="mo-top mo-top--work">
+  <h1 class="cs-sr-only">업무</h1>
+  <div class="mo-work__head">
+    <p class="mo-work__date"><time datetime="2026-11-18">11월 18일 수요일</time></p>
+    <span class="ui-seg ui-seg--s mo-seg-mini" role="radiogroup" aria-label="기간"><button class="ui-seg__item is-active" type="button" role="radio" aria-checked="true">오늘</button><button class="ui-seg__item" type="button" role="radio" aria-checked="false">이번 주</button><button class="ui-seg__item" type="button" role="radio" aria-checked="false">완료</button></span>
+  </div>
+  <p class="mo-count" data-view="ready empty loading"><span data-view="ready empty">할 일 <b data-bind="remaining">4</b>건 남음</span><span data-view="loading" hidden><span class="ui-skel ui-skel--text" style="--w:120px;--h:20px"></span></span><button class="mo-count__sort" type="button" data-view="ready loading" aria-haspopup="listbox" aria-label="정렬: 마감순, 바꾸기" data-todo>마감순<svg class="cs-icon" aria-hidden="true"><use href="#cs-i-chevron-down"/></svg></button></p>
+</div>
+
+<main class="mo-main mo-work" data-region="MOW-CM-030101">
+<div data-view="ready">
+  <h2 class="mo-group mo-group--alert" id="grpLate">마감 지남 <b>1</b></h2>
+  <ul class="mo-todo" aria-labelledby="grpLate">
+    <li class="mo-todo__row is-late">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" aria-label="완료로 표시: 체감효과 입력"><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title">체감효과 입력</span><span class="mo-todo__desc">청솔어린이집 · 공기질 관리</span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>어제 18:00</span>
+    </li>
+  </ul>
+
+  <h2 class="mo-group" id="grpToday">오늘 <b>3</b></h2>
+  <ul class="mo-todo" aria-labelledby="grpToday">
+    <li class="mo-todo__row">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" aria-label="완료로 표시: 견적서 발송"><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title">견적서 발송</span><span class="mo-todo__desc">서울푸드 본사 · 트랩 점검 추가</span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>13:00</span>
+    </li>
+    <li class="mo-todo__row">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" aria-label="완료로 표시: 재계약 일정 통화"><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title">재계약 일정 통화</span><span class="mo-todo__desc">그린마트 역삼점 · 담당 박지은 점장</span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>15:00</span>
+    </li>
+    <li class="mo-todo__row">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" aria-label="완료로 표시: 방문 보고 작성"><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title">방문 보고 작성</span><span class="mo-todo__desc">마루베이커리 · 위생 진단</span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>18:00</span>
+    </li>
+  </ul>
+
+  <h2 class="mo-group" id="grpDone">완료 <b>2</b></h2>
+  <ul class="mo-todo" aria-labelledby="grpDone">
+    <li class="mo-todo__row is-done">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" checked aria-label="완료 취소: 정기 방제 계약 등록"><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title">정기 방제 계약 등록</span><span class="mo-todo__desc">한빛식당 강남점</span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>09:12</span>
+    </li>
+    <li class="mo-todo__row is-done">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" checked aria-label="완료 취소: 방문 일정 확인 문자"><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title">방문 일정 확인 문자</span><span class="mo-todo__desc">마루베이커리</span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>08:40</span>
+    </li>
+  </ul>
+</div>
+
+<!-- 상태: 불러오는 중 — 목록 자리만 스켈레톤 (상단 · 하단 탭은 그대로) -->
+<div data-view="loading" hidden>
+  <p class="cs-sr-only" role="status">할 일을 불러오는 중이에요</p>
+  <p class="mo-group" aria-hidden="true"><span class="ui-skel ui-skel--text" style="--w:56px;--h:16px"></span></p>
+  <ul class="mo-todo">
+  <li class="mo-todo__row" aria-hidden="true"><span class="ui-skel ui-skel--rect" style="--w:24px;--h:24px;--r:6px"></span><span class="ui-skel-lines mo-todo__main"><span class="ui-skel ui-skel--text" style="--w:45%;--h:16px"></span><span class="ui-skel ui-skel--text" style="--w:70%"></span></span><span class="ui-skel ui-skel--text" style="--w:40px"></span></li>
+  <li class="mo-todo__row" aria-hidden="true"><span class="ui-skel ui-skel--rect" style="--w:24px;--h:24px;--r:6px"></span><span class="ui-skel-lines mo-todo__main"><span class="ui-skel ui-skel--text" style="--w:45%;--h:16px"></span><span class="ui-skel ui-skel--text" style="--w:70%"></span></span><span class="ui-skel ui-skel--text" style="--w:40px"></span></li>
+  <li class="mo-todo__row" aria-hidden="true"><span class="ui-skel ui-skel--rect" style="--w:24px;--h:24px;--r:6px"></span><span class="ui-skel-lines mo-todo__main"><span class="ui-skel ui-skel--text" style="--w:45%;--h:16px"></span><span class="ui-skel ui-skel--text" style="--w:70%"></span></span><span class="ui-skel ui-skel--text" style="--w:40px"></span></li>
+  </ul>
+</div>
+<!-- 상태: 빈 상태 · 오류 (디자인 시스템 Result) -->
+<div class="ui-fallback" data-view="empty" hidden><h2 class="ui-fallback__heading">오늘 할 일이 없어요</h2><p class="ui-fallback__desc">새 할 일이 생기면 여기에 모아 드려요.</p></div>
+<div class="ui-fallback" data-view="error" hidden role="alert"><h2 class="ui-fallback__heading">할 일을 불러오지 못했어요</h2><p class="ui-fallback__desc">네트워크 연결을 확인하고 다시 시도해 주세요.</p><div class="ui-fallback__actions"><button class="ui-btn ui-btn--rank4 ui-btn--md" type="button" data-retry>다시 시도</button></div></div>
+
+<!-- 줄 모양 (render.js 가 데이터로 채움) -->
+<template data-tpl="todo"><li class="mo-todo__row">
+      <label class="ui-ctl ui-ctl--m mo-todo__check"><input type="checkbox" class="ui-ctl__input" aria-label=""><span class="ui-ctl__box"></span></label>
+      <a class="mo-todo__main" href="#" data-todo><span class="mo-todo__title"></span><span class="mo-todo__desc"></span></a>
+      <span class="mo-todo__due"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg></span>
+    </li></template>
+</main>
+<div class="mo-bottom">
+<nav class="ui-bnav" aria-label="주요 메뉴">
+  <a class="ui-bnav__tab" href="MOW-SC-010101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-home"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-home-fill"/></svg></span><span>홈</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-010101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-calendar"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg></span><span>플래너</span></a>
+  <a class="ui-bnav__tab is-active" href="MOW-CM-030101.html" aria-current="page"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-report"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-report-fill"/></svg></span><span>업무</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-020101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-bell"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg></span><span>알림</span></a>
+  <a class="ui-bnav__tab" href="MOW-SC-010103.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-menu"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg></span><span>전체</span></a>
+</nav>
+</div>
+</div>
+<div class="mo-toast" aria-live="polite"><div class="ui-toast ui-toast--success" role="status"><svg class="cs-icon ui-toast__icon" aria-hidden="true"><use href="#cs-i-check"/></svg><span></span></div></div>
+<script src="../js/app.js"></script>
+<script src="../data/mock.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/render.js"></script>
+</body>
+</html>

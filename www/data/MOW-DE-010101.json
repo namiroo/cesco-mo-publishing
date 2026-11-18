@@ -1,0 +1,80 @@
+{
+  "as_of": "2026-11-18T12:10:00+09:00",
+  "user": {
+    "name": "이서준",
+    "role": "DE"
+  },
+  "visits_today": [
+    {
+      "id": "v-3101",
+      "customer_name": "한빛식당",
+      "start_at": "2026-11-18T09:00:00+09:00",
+      "end_at": "2026-11-18T10:00:00+09:00",
+      "status": "done",
+      "moved_from": null
+    },
+    {
+      "id": "v-3102",
+      "customer_name": "그린마트",
+      "start_at": "2026-11-18T10:30:00+09:00",
+      "end_at": "2026-11-18T11:30:00+09:00",
+      "status": "done",
+      "moved_from": null
+    },
+    {
+      "id": "v-3103",
+      "customer_name": "마루베이커리",
+      "start_at": "2026-11-18T14:00:00+09:00",
+      "end_at": "2026-11-18T15:00:00+09:00",
+      "status": "next",
+      "moved_from": null
+    },
+    {
+      "id": "v-3104",
+      "customer_name": "청솔",
+      "start_at": "2026-11-18T17:00:00+09:00",
+      "end_at": "2026-11-18T18:00:00+09:00",
+      "status": "later",
+      "moved_from": "2026-11-18T16:00:00+09:00"
+    }
+  ],
+  "next_visit": {
+    "visit_id": "v-3103",
+    "customer_name": "마루베이커리",
+    "start_at": "2026-11-18T14:00:00+09:00",
+    "service_type": "위생 진단",
+    "address_short": "서울 서초구 서초동",
+    "trap_count": 6,
+    "phone": "02-000-0000",
+    "lat": 37.4919,
+    "lng": 127.0076
+  },
+  "work_week": {
+    "worked_hours": 28,
+    "target_hours": 40,
+    "visible": true
+  },
+  "notices": [
+    {
+      "id": "n-2101",
+      "title": "청솔어린이집 방문 시간 변경",
+      "body": "16:00 → 17:00",
+      "created_at": "2026-11-18T12:00:00+09:00",
+      "target_screen": "MOW-CM-010101"
+    },
+    {
+      "id": "n-2004",
+      "title": "[공지] 11월 안전 교육 일정",
+      "body": "11월 25일(화) 14시",
+      "created_at": "2026-11-17T17:20:00+09:00",
+      "target_screen": null
+    },
+    {
+      "id": "n-2102",
+      "title": "약제 재고 부족",
+      "body": "살충제 A형 2병 남음",
+      "created_at": "2026-11-16T15:00:00+09:00",
+      "target_screen": null
+    }
+  ]
+}

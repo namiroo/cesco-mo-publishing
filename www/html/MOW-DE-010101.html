@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1840">
+<title>DE 홈 | MOW-DE-010101 | 세스코 모바일 오피스</title>
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/cesco-ui.css">
+<link rel="stylesheet" href="../css/app.css">
+<script src="../js/icons.js"></script>
+</head>
+<body class="mo-page">
+<!-- MOW-DE-010101 DE 홈 · 생성물 — 원본 03_디자인/screens/MOW-DE-010101.html 을 고친 뒤 python3 tools/build.py -->
+<div class="mo-app">
+<div class="mo-top mo-top--hero">
+  <header class="ui-topnav ui-topnav--start ui-topnav--home">
+    <span class="ui-topnav__lead"><img class="mo-logo" src="../img/logo-cesco-dark.svg" alt="CESCO"></span>
+    <span></span>
+    <span class="ui-topnav__trail"></span>
+  </header>
+</div>
+
+<main class="mo-main mo-home">
+  <!-- 오늘의 업무 = 하루 시간 막대 (SC 홈과 같은 부품, SOL 플래너와 연동 FR-DE-02) -->
+  <section class="mo-dayhead" aria-labelledby="homeTitle">
+    <p class="mo-today"><time datetime="2026-11-18">11월 18일 수요일</time></p>
+    <h1 class="mo-home__title" id="homeTitle">이서준 DE님, 다음 현장은<br><em>14:00 마루베이커리</em>예요</h1>
+
+    <a class="mo-dbar" href="MOW-CM-010101.html" aria-label="오늘 업무 시간표: 9시 한빛식당 강남점 정기 방제 완료, 10시 30분 그린마트 역삼점 진행중, 14시 마루베이커리 다음, 17시 청솔어린이집 예정. 지금 12시 10분. 플래너에서 보기">
+      <span class="mo-dbar__axis" aria-hidden="true">
+        <span style="--at:0">9시</span><span style="--at:3">12시</span><span style="--at:6">15시</span><span style="--at:9">18시</span>
+      </span>
+      <span class="mo-dbar__track" aria-hidden="true">
+        <span class="mo-dbar__past" style="--at:3.17"></span>
+        <span class="mo-dbar__blk is-done" style="--from:0;--to:1"></span>
+        <span class="mo-dbar__blk is-done" style="--from:1.5;--to:2.5"></span>
+        <span class="mo-dbar__blk is-next" style="--from:5;--to:6"></span>
+        <span class="mo-dbar__blk is-later" style="--from:8;--to:9"></span>
+        <span class="mo-dbar__now" style="--at:3.17"></span>
+      </span>
+      <span class="mo-dbar__names" aria-hidden="true">
+        <span class="is-done" style="--from:0">한빛식당</span><span class="is-now" style="--from:3.17">지금 12:10</span><span class="is-next" style="--from:5">마루베이커리</span><span style="--from:7.6">청솔</span>
+      </span>
+      <span class="mo-dbar__foot">
+        <span>2곳 완료 · 2곳 남음</span>
+      </span>
+    </a>
+  </section>
+
+  <!-- 다음 현장: 업무 유형 · 장비 · 주소, 전화 · 길찾기 -->
+  <section class="mo-card mo-next" aria-labelledby="nextName">
+    <h2 class="mo-next__name" id="nextName">마루베이커리</h2>
+    <p class="mo-next__meta"><span class="mo-next__left"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>14:00 · 1시간 50분 뒤</span><span class="mo-next__kind">위생 진단</span></p>
+    <p class="mo-next__addr"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-location"/></svg>서울 서초구 서초동 · 포획 트랩 6개</p>
+    <div class="mo-next__act">
+      <a class="ui-btn ui-btn--rank4 ui-btn--md" href="#" data-todo><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-phone"/></svg>전화</a>
+      <a class="ui-btn ui-btn--rank1 ui-btn--md" href="#" data-todo><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-location"/></svg>길찾기</a>
+    </div>
+  </section>
+
+  <!-- 근무: DE는 근무시간만 (계약 금액 없음 · 권한표) -->
+  <section class="mo-card mo-sum mo-sum--open" aria-label="이번 주 근무">
+    <dl class="mo-sum__body">
+      <div><dt>이번 주 근무</dt><dd><b>28시간</b> / 40시간</dd></div>
+    </dl>
+  </section>
+
+  <!-- 빠른 실행 5개: 첫 화면에서 한 번 눌러 실행 (FR-DE-03) -->
+  <section class="mo-card" aria-labelledby="secQuick">
+    <header class="ui-shead ui-shead--s mo-card__head">
+      <h2 class="ui-shead__title" id="secQuick">빠른 실행</h2>
+    </header>
+    <ul class="mo-svc mo-svc--5">
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="9" y="6" width="22" height="28" rx="2" fill="#3182F6"/><rect x="14" y="12" width="12" height="2" rx="1" fill="white"/><rect x="14" y="17" width="12" height="2" rx="1" fill="white"/><rect x="14" y="22" width="7" height="2" rx="1" fill="white"/><path d="M33.3137 17.7071C33.7042 17.3166 34.3374 17.3166 34.7279 17.7071L36.8492 19.8284C37.2398 20.219 37.2398 20.8521 36.8492 21.2426L29.0711 29.0208L25.5355 25.4853L33.3137 17.7071Z" fill="#FFC342"/><path d="M25.5355 25.4853L29.0711 29.0208L24.7165 30.4724C24.3256 30.6026 23.9537 30.2308 24.084 29.8399L25.5355 25.4853Z" fill="#F9E2AC"/></svg></span><span class="mo-svc__name">접수 등록</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="8" y="8" width="24" height="27" rx="3" fill="#3182F6"/><rect x="14" y="5" width="12" height="6" rx="2" fill="#90C2FF"/><path d="M13 18l2 2 3.5-3.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="21" y="17.5" width="7" height="2" rx="1" fill="white"/><path d="M13 26l2 2 3.5-3.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="21" y="25.5" width="7" height="2" rx="1" fill="white"/></svg></span><span class="mo-svc__name">점검</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="17" y="5" width="7" height="5" rx="1" fill="#4E5968"/><path d="M24 7h5a1 1 0 0 1 1 1v1h-6V7z" fill="#4E5968"/><path d="M15 12a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1l3 4v14a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V17l3-4v-1z" fill="#15C47E"/><rect x="12" y="20" width="17" height="8" fill="#B5EDD3"/><circle cx="32" cy="9" r="1.2" fill="#B5EDD3"/><circle cx="34.5" cy="6.5" r="1" fill="#B5EDD3"/><circle cx="34.5" cy="11.5" r="1" fill="#B5EDD3"/></svg></span><span class="mo-svc__name">약제 사용</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M18 14C16.3431 14 15 15.3431 15 17V27C15 28.6569 16.3431 30 18 30H28.1357L31.6621 33.2324C31.9828 33.5261 32.5 33.2982 32.5 32.8633V29.958C33.9188 29.7199 35 28.4865 35 27V17C35 15.3431 33.6569 14 32 14H18Z" fill="#FFC2C8"/><path d="M25 8C26.6569 8 28 9.34315 28 11V24C28 25.6569 26.6569 27 25 27H13.9092L8.82324 31.3037C8.49828 31.5787 8 31.3476 8 30.9219V27C6.34315 27 5 25.6569 5 24V11C5 9.34315 6.34315 8 8 8H25Z" fill="#F04452"/><path d="M12.5 17C13.3284 17 14 16.3284 14 15.5C14 14.6716 13.3284 14 12.5 14C11.6716 14 11 14.6716 11 15.5C11 16.3284 11.6716 17 12.5 17Z" fill="white"/><path d="M20.5 17C21.3284 17 22 16.3284 22 15.5C22 14.6716 21.3284 14 20.5 14C19.6716 14 19 14.6716 19 15.5C19 16.3284 19.6716 17 20.5 17Z" fill="white"/><path d="M11.5 20C13.9 22.4 19.1 22.4 21.5 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="mo-svc__name">체감효과</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="5" y="9" width="30" height="22" rx="3" fill="#90C2FF"/><path d="M10 24c2-4 4-6 5-4s-1 4 1 4 3-5 5-5 1 4 3 4" stroke="#3182F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="27" width="20" height="1.5" rx=".75" fill="#3182F6"/><path d="M29.5 6.5a1.5 1.5 0 0 1 2.1 0l1.9 1.9a1.5 1.5 0 0 1 0 2.1L25 19l-4 1 1-4 7.5-9.5z" fill="#FFC342"/></svg></span><span class="mo-svc__name">서명</span></a></li>
+    </ul>
+  </section>
+
+  <div class="mo-zone">
+  <!-- 공지 · 알림 (FR-DE-06): 최근 활동과 같은 줄 카드 -->
+  <header class="mo-sec">
+    <h2 class="mo-sec__title" id="secNoti">공지 · 알림</h2>
+    <a class="mo-sec__link" href="MOW-CM-020101.html">전체보기<svg class="cs-icon" aria-hidden="true"><use href="#cs-i-chevron-right"/></svg></a>
+  </header>
+  <section class="mo-card mo-feed" aria-labelledby="secNoti">
+    <ul class="mo-feed__list">
+      <li><a class="mo-feed__row" href="MOW-CM-010101.html"><span class="mo-feed__av mo-feed__av--art" aria-hidden="true"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9.5" fill="#8B7FE8"/><path d="M12 7v5.2h3.6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mo-feed__main"><span class="mo-feed__name">청솔어린이집 방문 시간 변경</span><span class="mo-feed__desc">16:00 → 17:00 · 10분 전</span></span></a></li>
+      <li><a class="mo-feed__row" href="#" data-todo><span class="mo-feed__av mo-feed__av--art" aria-hidden="true"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6.4 6.4 0 0 1 6.4 6.4v3.6l1.7 2.7a.9.9 0 0 1-.76 1.4H4.66a.9.9 0 0 1-.76-1.4L5.6 13V9.4A6.4 6.4 0 0 1 12 3z" fill="#F29B4B"/><path d="M9.6 18.9h4.8a2.4 2.4 0 0 1-4.8 0z" fill="#F29B4B"/></svg></span><span class="mo-feed__main"><span class="mo-feed__name">[공지] 11월 안전 교육 일정</span><span class="mo-feed__desc">11월 25일(화) 14시 · 어제</span></span></a></li>
+      <li><a class="mo-feed__row" href="#" data-todo><span class="mo-feed__av mo-feed__av--art" aria-hidden="true"><svg class="mo-art" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5l7.5 2.8v6.1c0 4.9-3.2 8.8-7.5 10.6-4.3-1.8-7.5-5.7-7.5-10.6V5.3z" fill="#6A7F99"/><path d="M8.6 11.8l2.4 2.4 4.4-4.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mo-feed__main"><span class="mo-feed__name">약제 재고 부족</span><span class="mo-feed__desc">살충제 A형 2병 남음 · 11월 16일</span></span></a></li>
+    </ul>
+  </section>
+  </div>
+</main>
+<div class="mo-bottom">
+<nav class="ui-bnav" aria-label="주요 메뉴">
+  <a class="ui-bnav__tab is-active" href="MOW-DE-010101.html" aria-current="page"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-home"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-home-fill"/></svg></span><span>홈</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-010101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-calendar"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg></span><span>플래너</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-030101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-report"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-report-fill"/></svg></span><span>업무</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-020101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-bell"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg></span><span>알림</span></a>
+  <a class="ui-bnav__tab" href="MOW-SC-010103.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-menu"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg></span><span>전체</span></a>
+</nav>
+</div>
+</div>
+<div class="mo-toast" aria-live="polite"><div class="ui-toast ui-toast--success" role="status"><svg class="cs-icon ui-toast__icon" aria-hidden="true"><use href="#cs-i-check"/></svg><span></span></div></div>
+<script src="../js/app.js"></script>
+</body>
+</html>

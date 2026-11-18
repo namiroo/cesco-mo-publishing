@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>화면 보기 | 세스코 모바일 오피스 Mark-up Guide</title>
+<link rel="stylesheet" href="../../www/css/font.css">
+<link rel="stylesheet" href="../../www/css/cesco-ui.css">
+<link rel="stylesheet" href="../css/guide.css">
+</head>
+<body class="gd">
+<header class="gd-head"><p>세스코 모바일 오피스 Mark-up Guide</p><h1>화면 보기</h1></header>
+<main>
+<div class="gd-view"><iframe id="f" class="gd-phone" title="화면"></iframe><div class="gd-meta"><h2 id="t"></h2><p><code id="i"></code></p><p><a id="o" target="_blank" rel="noopener">새 창으로 열기 →</a></p><p class="gd-note">390 × 844 기준. 화면 파일은 <code>www/html/</code>에 있습니다.</p></div></div><script>var N={"MOW-CM-000101": "로그인", "MOW-CM-010101": "SOL 플래너", "MOW-CM-020101": "알림", "MOW-CM-020101E": "알림 · 알림 없음", "MOW-CM-030101": "업무 (오늘 할 일)", "MOW-CM-030101E": "업무 (오늘 할 일) · 할 일 없음", "MOW-DE-010101": "DE 홈", "MOW-SC-010101": "SC 홈", "MOW-SC-010102": "주요서비스 전체 · 순서 편집", "MOW-SC-010103": "전체 · 나의 메뉴 · 개인정보 공개 설정"};var q=new URLSearchParams(location.search),s=q.get("s")||"MOW-SC-010101",st=q.get("state"),u="../../www/html/"+s+".html"+(st?"?state="+st:"");document.getElementById("f").src=u;document.getElementById("t").textContent=(N[s]||s)+(st?" · "+{loading:"불러오는 중",empty:"빈 상태",error:"오류"}[st]:"");document.getElementById("i").textContent=s;document.getElementById("o").href=u;document.title=(N[s]||s)+" | "+document.title;</script>
+</main>
+</body>
+</html>

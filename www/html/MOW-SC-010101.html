@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1840">
+<title>SC 홈 | MOW-SC-010101 | 세스코 모바일 오피스</title>
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/cesco-ui.css">
+<link rel="stylesheet" href="../css/app.css">
+<script src="../js/icons.js"></script>
+</head>
+<body class="mo-page">
+<!-- MOW-SC-010101 SC 홈 · 생성물 — 원본 03_디자인/screens/MOW-SC-010101.html 을 고친 뒤 python3 tools/build.py -->
+<div class="mo-app">
+<div class="mo-top mo-top--hero">
+  <header class="ui-topnav ui-topnav--start ui-topnav--home">
+    <span class="ui-topnav__lead"><img class="mo-logo" src="../img/logo-cesco-dark.svg" alt="CESCO"></span>
+    <span></span>
+    <span class="ui-topnav__trail"></span>
+  </header>
+</div>
+
+<main class="mo-main mo-home">
+  <!-- 하루 시간 막대: 09~18시 위에 오늘 방문, 「지금」 선 (홈의 기억에 남는 한 곳) -->
+  <section class="mo-dayhead" aria-labelledby="homeTitle">
+    <p class="mo-today"><time datetime="2026-11-16">11월 16일 월요일</time></p>
+    <h1 class="mo-home__title" id="homeTitle">김민준 SC님, 다음 방문은<br><em>14:00 마루베이커리</em>예요</h1>
+
+    <a class="mo-dbar" href="MOW-CM-010101.html" aria-label="오늘 방문 시간표: 9시 30분 한빛식당 강남점 완료, 14시 마루베이커리 다음 방문, 16시 30분 그린마트 역삼점 예정. 지금 12시 10분. 플래너에서 보기">
+      <span class="mo-dbar__axis" aria-hidden="true">
+        <span style="--at:0">9시</span><span style="--at:3">12시</span><span style="--at:6">15시</span><span style="--at:9">18시</span>
+      </span>
+      <span class="mo-dbar__track" aria-hidden="true">
+        <span class="mo-dbar__past" style="--at:3.17"></span>
+        <span class="mo-dbar__blk is-done" style="--from:.5;--to:1.5"></span>
+        <span class="mo-dbar__blk is-next" style="--from:5;--to:6"></span>
+        <span class="mo-dbar__blk is-later is-moved" style="--from:7.5;--to:8.5"></span>
+        <span class="mo-dbar__now" style="--at:3.17"></span>
+      </span>
+      <span class="mo-dbar__names" aria-hidden="true">
+        <span class="is-done" style="--from:.5">한빛식당</span><span class="is-now" style="--from:3.17">지금 12:10</span><span class="is-next" style="--from:5">마루베이커리</span><span style="--from:7.5">그린마트</span>
+      </span>
+      <span class="mo-dbar__foot">
+        <span>1곳 완료 · 2곳 남음</span>
+        <span class="mo-dbar__moved">그린마트 16:30으로 변경</span>
+      </span>
+    </a>
+  </section>
+
+  <!-- 다음 방문: 남은 시간 · 목적 · 주소, 전화 · 길찾기 -->
+  <section class="mo-card mo-next" aria-labelledby="nextName">
+    <h2 class="mo-next__name" id="nextName">마루베이커리</h2>
+    <p class="mo-next__meta"><span class="mo-next__left"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-clock"/></svg>14:00 · 1시간 50분 뒤</span><span class="mo-next__kind">위생 진단</span></p>
+    <p class="mo-next__addr"><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-location"/></svg>서울 서초구 서초동 · 지난 방문 10월 14일</p>
+    <div class="mo-next__act">
+      <a class="ui-btn ui-btn--rank4 ui-btn--md" href="#" data-todo><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-phone"/></svg>전화</a>
+      <a class="ui-btn ui-btn--rank1 ui-btn--md" href="#" data-todo><svg class="cs-icon" aria-hidden="true"><use href="#cs-i-location"/></svg>길찾기</a>
+    </div>
+  </section>
+
+  <!-- 근무 · 계약: 공개 (2026-11-17 사용자 결정 — 가림 없이 항상 표시) -->
+  <section class="mo-card mo-sum mo-sum--open" aria-label="이번 주 근무와 이번 달 계약">
+    <dl class="mo-sum__body">
+      <div><dt>이번 주 근무</dt><dd><b>32시간</b> / 40시간</dd></div>
+      <div><dt>이번 달 계약</dt><dd><b>1,240만원</b> · 목표까지 350만원</dd></div>
+    </dl>
+  </section>
+
+  <section class="mo-card" aria-labelledby="secSvc">
+    <header class="ui-shead ui-shead--s mo-card__head">
+      <h2 class="ui-shead__title" id="secSvc">주요 서비스</h2>
+      <span class="ui-shead__trail"><a class="mo-more" href="MOW-SC-010102.html">편집</a></span>
+    </header>
+    <ul class="mo-svc">
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="9" y="6" width="22" height="28" rx="2" fill="#3182F6"/><rect x="14" y="12" width="12" height="2" rx="1" fill="white"/><rect x="14" y="17" width="12" height="2" rx="1" fill="white"/><rect x="14" y="22" width="7" height="2" rx="1" fill="white"/><path d="M33.3137 17.7071C33.7042 17.3166 34.3374 17.3166 34.7279 17.7071L36.8492 19.8284C37.2398 20.219 37.2398 20.8521 36.8492 21.2426L29.0711 29.0208L25.5355 25.4853L33.3137 17.7071Z" fill="#FFC342"/><path d="M25.5355 25.4853L29.0711 29.0208L24.7165 30.4724C24.3256 30.6026 23.9537 30.2308 24.084 29.8399L25.5355 25.4853Z" fill="#F9E2AC"/></svg></span><span class="mo-svc__name">계약 등록</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M29.9552 32.0007C30.0048 32.5508 29.5597 33 29.0074 33C24.8595 33 13.1405 33 8.99261 33C8.44032 33 7.99524 32.5508 8.04478 32.0007C8.54965 26.3939 13.2617 22 19 22C24.7383 22 29.4503 26.3939 29.9552 32.0007Z" fill="#3182F6"/><circle cx="19" cy="13" r="6" fill="#90C2FF"/><path d="M27 32C30.3137 32 33 29.3137 33 26C33 22.6863 30.3137 20 27 20C23.6863 20 21 22.6863 21 26C21 29.3137 23.6863 32 27 32Z" fill="white" stroke="#4E5968" stroke-width="2.5"/><path d="M32 31L34 33" stroke="#4E5968" stroke-width="2.5" stroke-linecap="round"/></svg></span><span class="mo-svc__name">고객 조회</span></a></li>
+      <li><a class="mo-svc__item" href="MOW-CM-010101.html"><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6" y="7" width="28" height="26" rx="3" fill="#3182F6"/><rect x="11" y="18" width="5" height="4" rx="1" fill="white"/><rect x="11" y="25" width="5" height="4" rx="1" fill="white"/><rect x="18" y="25" width="5" height="4" rx="1" fill="white"/><rect x="18" y="18" width="5" height="4" rx="1" fill="#FFC342"/><rect x="25" y="18" width="5" height="4" rx="1" fill="white"/><path d="M6 10C6 8.34315 7.34315 7 9 7H31C32.6569 7 34 8.34315 34 10V14H6V10Z" fill="#90C2FF"/></svg></span><span class="mo-svc__name">SOL 플래너</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="9" y="6" width="22" height="28" rx="2" fill="#FFF1CC"/><path d="M9 8C9 6.89543 9.89543 6 11 6H29C30.1046 6 31 6.89543 31 8V16H9V8Z" fill="#FFC342"/><rect x="13" y="20" width="12" height="2" rx="1" fill="#FFC342"/><rect x="13" y="25" width="8" height="2" rx="1" fill="#FFC342"/><circle cx="29" cy="29" r="7" fill="#FF8A3D"/><path d="M27 29L28.5 30.5L32 27" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="mo-svc__name">견적서</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M12 19C12 17.3431 13.3431 16 15 16H23C24.6569 16 26 17.3431 26 19V32C26 33.6569 24.6569 35 23 35H15C13.3431 35 12 33.6569 12 32V19Z" fill="#15C47E"/><path d="M15 7H23V16C23 17 21.2091 17.5 19 17.5C16.7909 17.5 15 17 15 16V7Z" fill="#0EA86A"/><rect x="15" y="23" width="8" height="6" rx="0.5" fill="white"/><path d="M24 7H29.3063C29.6476 7 29.8886 7.33435 29.7806 7.65811L29.114 9.65811C29.0459 9.86228 28.8548 10 28.6396 10H24V7Z" fill="#0EA86A"/><path d="M13 6.5C13 6.22386 13.2239 6 13.5 6H24.5C24.7761 6 25 6.22386 25 6.5V10.5C25 10.7761 24.7761 11 24.5 11H13.5C13.2239 11 13 10.7761 13 10.5V6.5Z" fill="#4E5968"/><circle cx="33" cy="8" r="2" fill="#B5EDD3"/><circle cx="34.5" cy="13.5" r="1.5" fill="#B5EDD3"/><circle cx="31" cy="16" r="1" fill="#B5EDD3"/></svg></span><span class="mo-svc__name">방제 이력</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><path d="M18 14C16.3431 14 15 15.3431 15 17V27C15 28.6569 16.3431 30 18 30H28.1357L31.6621 33.2324C31.9828 33.5261 32.5 33.2982 32.5 32.8633V29.958C33.9188 29.7199 35 28.4865 35 27V17C35 15.3431 33.6569 14 32 14H18Z" fill="#FFC2C8"/><path d="M25 8C26.6569 8 28 9.34315 28 11V24C28 25.6569 26.6569 27 25 27H13.9092L8.82324 31.3037C8.49828 31.5787 8 31.3476 8 30.9219V27C6.34315 27 5 25.6569 5 24V11C5 9.34315 6.34315 8 8 8H25Z" fill="#F04452"/><path d="M12.5 17C13.3284 17 14 16.3284 14 15.5C14 14.6716 13.3284 14 12.5 14C11.6716 14 11 14.6716 11 15.5C11 16.3284 11.6716 17 12.5 17Z" fill="white"/><path d="M20.5 17C21.3284 17 22 16.3284 22 15.5C22 14.6716 21.3284 14 20.5 14C19.6716 14 19 14.6716 19 15.5C19 16.3284 19.6716 17 20.5 17Z" fill="white"/><path d="M11.5 20C13.9 22.4 19.1 22.4 21.5 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="mo-svc__name">체감효과</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="4" y="8.5" width="32" height="23" rx="3" fill="#3182F6"/><rect x="8" y="22" width="5" height="5" rx="0.5" fill="white"/><path d="M4 13H36V18H4V13Z" fill="#90C2FF"/></svg></span><span class="mo-svc__name">정산</span></a></li>
+      <li><a class="mo-svc__item" href="#" data-todo><span class="mo-svc__ic"><svg class="mo-art" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><rect x="6.8667" y="21.6263" width="4.97771" height="13.6887" rx="2.48886" transform="rotate(-15 6.8667 21.6263)" fill="#507DDF"/><g filter="url(#svc-notice-inner)"><path d="M5.00012 19.5043C5.00012 16.0679 7.78587 13.2822 11.2223 13.2822H24.8332C25.5634 13.2822 26.1554 13.8741 26.1554 14.6044V24.4042C26.1554 25.1345 25.5634 25.7264 24.8332 25.7264H11.2223C7.78587 25.7264 5.00012 22.9407 5.00012 19.5043Z" fill="#4F9EF7"/></g><path opacity="0.55" d="M5.00012 19.5043C5.00012 16.0679 7.78587 13.2822 11.2223 13.2822H24.8332C25.5634 13.2822 26.1554 13.8741 26.1554 14.6044V24.4042C26.1554 25.1345 25.5634 25.7264 24.8332 25.7264H11.2223C7.78587 25.7264 5.00012 22.9407 5.00012 19.5043Z" fill="#3182F6"/><path d="M25.5336 16.012C25.5336 15.879 25.6414 15.7711 25.7744 15.7711H29.2669C31.3287 15.7711 33.0001 17.4426 33.0001 19.5044C33.0001 21.5663 31.3287 23.2377 29.2669 23.2377H25.7744C25.6414 23.2377 25.5336 23.1299 25.5336 22.9968V16.012Z" fill="#739DF0"/><path d="M27.5535 7.42901C28.8863 6.70206 30.5112 7.66668 30.5112 9.1848V29.824C30.5112 31.3421 28.8863 32.3068 27.5535 31.5798L16.8225 25.7266V13.2823L27.5535 7.42901Z" fill="#90C2FF"/><defs><filter id="svc-notice-inner" x="5.00012" y="13.2822" width="21.1553" height="13.6887" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="1.24443"/><feGaussianBlur stdDeviation="1.43109"/><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/><feColorMatrix type="matrix" values="0 0 0 0 0.164706 0 0 0 0 0.419608 0 0 0 0 0.768627 0 0 0 0.2 0"/><feBlend mode="normal" in2="shape" result="effect1_innerShadow"/></filter></defs></svg></span><span class="mo-svc__name">공지사항</span></a></li>
+    </ul>
+  </section>
+
+  <div class="mo-zone">
+  <!-- 최근 활동: 구역 제목은 카드 밖, 업체 머리글자 칸 + 상태 알약 -->
+  <header class="mo-sec">
+    <h2 class="mo-sec__title" id="secAct">최근 활동</h2>
+    <a class="mo-sec__link" href="#" data-todo>전체보기<svg class="cs-icon" aria-hidden="true"><use href="#cs-i-chevron-right"/></svg></a>
+  </header>
+  <section class="mo-card mo-feed" aria-labelledby="secAct">
+    <ul class="mo-feed__list">
+      <li><a class="mo-feed__row" href="#" data-todo><span class="mo-feed__av" aria-hidden="true"><svg class="mo-art mo-art--line" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3.5 13.8 10.2 10.4V20.5H3.5z"/><path fill="currentColor" d="M11.6 8.1 16.05 3.5 20.5 8.1V20.5H11.6z"/></svg></span><span class="mo-feed__main"><span class="mo-feed__name">한빛식당 강남점</span><span class="mo-feed__desc">정기 방제 계약 등록 · 오늘 09:12</span></span><span class="mo-feed__state is-done">완료</span></a></li>
+      <li><a class="mo-feed__row" href="#" data-todo><span class="mo-feed__av" aria-hidden="true"><svg class="mo-art mo-art--line" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3.5 13.8 10.2 10.4V20.5H3.5z"/><path fill="currentColor" d="M11.6 8.1 16.05 3.5 20.5 8.1V20.5H11.6z"/></svg></span><span class="mo-feed__main"><span class="mo-feed__name">그린마트 역삼점</span><span class="mo-feed__desc">재계약 일정 협의 통화 · 어제 16:40</span></span><span class="mo-feed__state is-doing">진행중</span></a></li>
+      <li><a class="mo-feed__row" href="#" data-todo><span class="mo-feed__av" aria-hidden="true"><svg class="mo-art mo-art--line" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3.5 13.8 10.2 10.4V20.5H3.5z"/><path fill="currentColor" d="M11.6 8.1 16.05 3.5 20.5 8.1V20.5H11.6z"/></svg></span><span class="mo-feed__main"><span class="mo-feed__name">서울푸드 본사</span><span class="mo-feed__desc">견적서 발송 · 11월 9일</span></span><span class="mo-feed__state is-wait">대기</span></a></li>
+    </ul>
+  </section>
+  </div>
+</main>
+<div class="mo-bottom">
+<nav class="ui-bnav" aria-label="주요 메뉴">
+  <a class="ui-bnav__tab is-active" href="MOW-SC-010101.html" aria-current="page"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-home"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-home-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-home-fill"/></svg></span><span>홈</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-010101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-calendar"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-calendar-fill"/></svg></span><span>플래너</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-030101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-report"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-report-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-report-fill"/></svg></span><span>업무</span></a>
+  <a class="ui-bnav__tab" href="MOW-CM-020101.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-bell"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-bell-fill"/></svg></span><span>알림</span></a>
+  <a class="ui-bnav__tab" href="MOW-SC-010103.html"><span class="mo-tabic"><svg class="cs-icon mo-tabic__line" aria-hidden="true"><use href="#cs-i-menu"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--1" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--2" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg><svg class="cs-icon mo-tabic__fill mo-tabic__fill--3" aria-hidden="true"><use href="#cs-i-menu-fill"/></svg></span><span>전체</span></a>
+</nav>
+</div>
+</div>
+<div class="mo-toast" aria-live="polite"><div class="ui-toast ui-toast--success" role="status"><svg class="cs-icon ui-toast__icon" aria-hidden="true"><use href="#cs-i-check"/></svg><span></span></div></div>
+<script src="../js/app.js"></script>
+</body>
+</html>

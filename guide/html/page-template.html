@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>페이지 템플릿 | 세스코 모바일 오피스 Mark-up Guide</title>
+<link rel="stylesheet" href="../../www/css/font.css">
+<link rel="stylesheet" href="../../www/css/cesco-ui.css">
+<link rel="stylesheet" href="../css/guide.css">
+</head>
+<body class="gd">
+<header class="gd-head"><p>세스코 모바일 오피스 Mark-up Guide</p><h1>페이지 템플릿</h1></header>
+<main class="gd-body">
+<h2>1. 기본 틀</h2><p>모든 화면 HTML은 같은 틀을 씁니다. 화면마다 바뀌는 것은 제목 · 상단 색(<code>theme-color</code>) · 본문뿐입니다.</p><pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
+&lt;meta name=&quot;theme-color&quot; content=&quot;#FFFFFF&quot;&gt;
+&lt;title&gt;화면 이름 | 화면 ID | 세스코 모바일 오피스&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{font}&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/cesco-ui.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/app.css&quot;&gt;
+&lt;script src=&quot;../js/icons.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body class=&quot;mo-page&quot;&gt;
+&lt;!-- 화면ID 화면 이름 · 생성물 — 원본 03_디자인/screens/화면ID.html 을 고친 뒤 python3 tools/build.py --&gt;
+&lt;div class=&quot;mo-app&quot;&gt;
+  … 화면 본문 …
+&lt;/div&gt;
+&lt;div class=&quot;mo-toast&quot; aria-live=&quot;polite&quot;&gt;&lt;div class=&quot;ui-toast ui-toast--success&quot; role=&quot;status&quot;&gt;&lt;svg class=&quot;cs-icon ui-toast__icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;#cs-i-check&quot;/&gt;&lt;/svg&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;script src=&quot;../js/app.js&quot;&gt;&lt;/script&gt;
+&lt;!-- 데이터 화면만: ../data/mock.js · ../js/data.js · ../js/render.js --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2>2. 영역</h2><table class="gd-table gd-table--list"><thead><tr><th>선택자</th><th>역할</th></tr></thead><tbody><tr><td><code>body.mo-page</code></td><td>모든 화면의 바탕. 글자 크기 기준 16px</td></tr><tr><td><code>.mo-app</code></td><td>화면 틀. 최대 폭 480 · 가운데 정렬 · 높이 100dvh</td></tr><tr><td><code>.mo-top</code></td><td>상단 고정 영역(있는 화면만). 스크롤되면 <code>is-stuck</code></td></tr><tr><td><code>.mo-bottom &gt; .ui-bnav</code></td><td>하단 탭(탭이 있는 화면만). 선택 탭 <code>is-active</code> + <code>aria-current="page"</code></td></tr><tr><td><code>.mo-toast</code></td><td>알림 띠 자리. <code>data-toast="문구"</code>가 붙은 버튼을 누르면 나타남</td></tr></tbody></table>
+</main>
+</body>
+</html>

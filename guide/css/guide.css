@@ -27,10 +27,6 @@ details.gd-fold { margin:8px 0; border:1px solid var(--cs-divider); border-radiu
 details.gd-fold > summary { padding:10px 14px; cursor:pointer; font-weight:600; }
 details.gd-fold > .gd-table { margin:0; }
 
-/* 화면 보기 (view.html) */
-.gd-view { display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; padding:24px 32px; }
-.gd-phone { flex:none; width:390px; height:844px; border:0; border-radius:28px; background:var(--cs-surface-screen); box-shadow:0 0 0 10px var(--cs-text-primary), 0 12px 40px color-mix(in srgb, var(--cs-navy-900) 18%, transparent); margin:10px; }
-.gd-meta { flex:1; min-width:240px; }
 
 /* 코딩진행표 왼쪽 */
 body.gd-left { font-size:13px; background:var(--cs-surface-muted); }

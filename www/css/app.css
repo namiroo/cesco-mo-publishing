@@ -244,7 +244,7 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 /* 아이콘은 단색 */
 .mo-svc__ic { color:var(--cs-text-primary); background:var(--cs-fill-neutral); border-radius:var(--cs-radius-medium); }
 .mo-svc__ic .cs-icon { --cs-icon-stroke-medium:1.8; }
-/* 평면 그림 아이콘 (03_디자인/art) — 회색 칸 안에 */
+/* 평면 그림 아이콘 (04_Design/art) — 회색 칸 안에 */
 .mo-art { display:block; }
 .mo-svc__ic:has(.mo-art) { width:56px; height:56px; background:none; }
 .mo-svc__ic .mo-art { width:48px; height:48px; }
@@ -444,7 +444,7 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-app:has(.mo-home) .mo-home .mo-sec + .mo-card { margin-top:0; padding-top:var(--cs-space-50); }
 
 /* ── 플레이그라운드 조절판 (--k-*) ─────────────────────
- * 기본값 = 지금 값. 플레이그라운드(05_전달/playground.html)가 이 변수만 덮어써서 미리 본다.
+ * 기본값 = 지금 값. 플레이그라운드(05_Deliver/playground.html)가 이 변수만 덮어써서 미리 본다.
  * 확정된 값은 위쪽 원래 규칙에 반영하고, 여기 기본값도 같이 바꾼다.
  */
 /* 홈 머리 영역 */

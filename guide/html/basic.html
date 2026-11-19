@@ -35,7 +35,7 @@
   <tr><th>화면 구성</th><td>모바일 전용 · 단일 마크업 (<code>www/css/responsive.css</code>)</td></tr>
   <tr><th>기준 해상도</th><td>시안 390 × 844 · 최소 지원 폭 360<br>· 360~480px = 폭 100% 유동<br>· 480px 초과 = 480 고정 · 가운데 정렬 (태블릿 · PC에서도 모바일 화면 그대로)<br>· 확인 폭: 360 · 390 · 430 · 480</td></tr>
   <tr><th>안전 영역</th><td><code>viewport-fit=cover</code> + <code>env(safe-area-inset-*)</code>로 상단 상태 표시줄 · 하단 홈 표시줄을 피합니다.</td></tr>
-  <tr><th>글꼴</th><td>Pretendard Variable을 <b>로컬 파일</b>로 넣었습니다(<code>www/fonts</code>, 486KB, OFL 라이선스 동봉). 한글 KS X 1001 2,350자 + 영문 · 숫자 · 기호. 그 밖의 글자는 시스템 글꼴로 표시되며, 필요하면 전체 글꼴(약 2MB)로 바꿀 수 있습니다. 외부 CDN 의존은 없습니다.</td></tr>
+  <tr><th>글꼴</th><td>Pretendard <b>공식 웹 배포 파일</b>을 로컬로 넣었습니다(<code>www/fonts</code>, OFL 라이선스 동봉). 정적 서브셋 woff2 4개 — <code>Pretendard-Regular · Medium · SemiBold · Bold.subset.woff2</code>(각 약 270KB, 굵기 400 · 500 · 600 · 700). 한글 KS X 1001 2,350자 + 영문 · 숫자 · 기호이며, 그 밖의 글자는 시스템 글꼴로 표시됩니다. 외부 CDN 의존은 없습니다. 웹에는 <code>.otf</code> 대신 압축된 <code>.woff2</code>를 씁니다.</td></tr>
 </table>
 
 <h2>5. 코딩 규칙</h2>

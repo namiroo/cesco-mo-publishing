@@ -1,0 +1,2 @@
+/* 플레이그라운드 화면 목록 (tools/build.py 생성) */
+window.CESCO_SCREENS = [{"id": "MOW-CM-000101", "name": "로그인"}, {"id": "MOW-SC-010101", "name": "SC 홈"}, {"id": "MOW-SC-010102", "name": "주요서비스 전체 · 순서 편집"}, {"id": "MOW-SC-010103", "name": "전체 · 나의 메뉴 · 개인정보 공개 설정"}, {"id": "MOW-DE-010101", "name": "DE 홈"}, {"id": "MOW-CM-010101", "name": "SOL 플래너"}, {"id": "MOW-CM-030101", "name": "업무 (오늘 할 일)"}, {"id": "MOW-CM-030101E", "name": "업무 (오늘 할 일) · 할 일 없음"}, {"id": "MOW-CM-020101", "name": "알림"}, {"id": "MOW-CM-020101E", "name": "알림 · 알림 없음"}];

@@ -132,10 +132,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-feed__name, .mo-feed__desc { display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 .mo-feed__name { font-size:var(--cs-type-heading-xsmall-size); font-weight:600; }
 .mo-feed__desc { margin-top:var(--cs-space-25); color:var(--cs-text-secondary); font-size:var(--cs-type-input-helper-size); }
-.mo-feed__state { flex:none; font-size:var(--cs-type-input-helper-size); font-weight:700; }
-.mo-feed__state.is-done { color:var(--cs-text-success); }
-.mo-feed__state.is-doing { color:var(--cs-text-primary); }
-.mo-feed__state.is-wait { color:var(--cs-text-warning); }
 
 /* ── 목록 (플래너) ────────────────────────────────── */
 .mo-filter { display:grid; gap:var(--cs-space-200); padding:var(--cs-space-50) var(--cs-space-250) var(--cs-space-200); }
@@ -272,13 +268,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 /* 글자 또렷하게: 자간 살짝 좁게 · 보조 글자 한 단계 진하게 · px 고정 부품 글자 1px 키움 */
 .mo-page { letter-spacing:-.01em; text-rendering:optimizeLegibility; }
 .mo-list .ui-cell__desc, .mo-card__cap, .mo-note { color:var(--cs-text-secondary); }
-.mo-page .ui-cbadge--m { --ui-cb-fs:13px; --ui-cb-h:26px; }
-/* 상태 배지: 채도 높은 한 단계 진한 바탕 · 같은 너비 */
-.mo-page .ui-cbadge--solid.ui-cbadge--m { justify-content:center; min-width:60px; padding:0 var(--cs-space-100); font-weight:700; }
-.mo-page .ui-cbadge--solid.ui-cbadge--success { --ui-cb-bg:var(--cs-green-100); --ui-cb-fg:var(--cs-green-800); }
-.mo-page .ui-cbadge--solid.ui-cbadge--info { --ui-cb-bg:var(--cs-blue-100); --ui-cb-fg:var(--cs-blue-700); }
-.mo-page .ui-cbadge--solid.ui-cbadge--warning { --ui-cb-bg:var(--cs-yellow-100); --ui-cb-fg:var(--cs-orange-800); }
-.mo-page .ui-cbadge--solid.ui-cbadge--danger { --ui-cb-bg:var(--cs-red-100); --ui-cb-fg:var(--cs-red-700); }
 .mo-card:has(> .mo-svc) { padding-left:var(--cs-space-200); padding-right:var(--cs-space-200); }
 .mo-card:has(> .mo-svc) .mo-card__head { padding:0 var(--cs-space-50); }
 .mo-svc__name { font-size:13px; letter-spacing:-.03em; }
@@ -299,8 +288,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-app:has(.mo-week) .mo-visit { box-shadow:inset 0 0 0 1px var(--cs-border-subtle); }
 .mo-app:has(.mo-week) .mo-visit__name { font-size:var(--cs-type-heading-medium-size); }
 .mo-app:has(.mo-week) .mo-visit__type { color:var(--cs-text-secondary); }
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge { min-width:0; height:auto; padding:0; background:none; }
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--warning { color:var(--cs-orange-700); }
 
 /* ── 누름 · 포커스 · 움직임 ───────────────────────── */
 /* 누르는 순간 반응 (축소는 transform 만 · 160ms) */
@@ -365,10 +352,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-home .mo-feed { padding-top:var(--cs-space-50); }
 /* 활동 행: 머리글자 칸 + 상태 알약 */
 .mo-feed__av { display:grid; place-items:center; flex:none; width:44px; height:44px; color:var(--cs-text-brand); background:var(--cs-blue-50); border-radius:var(--cs-radius-medium); font-size:var(--cs-type-input-helper-size); font-weight:700; }
-.mo-feed__state { padding:var(--cs-space-25) var(--cs-space-100); border-radius:var(--cs-radius-full); }
-.mo-feed__state.is-done { color:var(--cs-green-800); background:var(--cs-green-100); }
-.mo-feed__state.is-doing { color:var(--cs-text-secondary); background:var(--cs-fill-neutral); }
-.mo-feed__state.is-wait { color:var(--cs-orange-800); background:var(--cs-yellow-100); }
 /* 하단 탭: 떠 있는 알약 */
 .mo-app:has(.ui-bnav) .mo-bottom { padding:0 var(--cs-space-200) calc(var(--cs-space-150) + env(safe-area-inset-bottom)); background:transparent; pointer-events:none; }
 .mo-app:has(.ui-bnav) .mo-bottom .ui-bnav { pointer-events:auto; height:64px; padding:var(--cs-space-50); box-sizing:border-box; background:var(--cs-surface-card); border-radius:var(--cs-radius-full); box-shadow:0 0 0 1px var(--cs-border-subtle), 0 8px 24px color-mix(in srgb, var(--cs-navy-900) 12%, transparent); }
@@ -405,8 +388,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-top--hero .mo-day.is-on.has-visit::after { background:var(--cs-fill-brand); }
 /* 플래너 목록: 흰 카드 + 상태 알약 */
 .mo-app:has(.mo-week) .mo-visit { box-shadow:0 0 0 1px var(--cs-border-subtle), 0 2px 8px color-mix(in srgb, var(--cs-navy-900) 4%, transparent); }
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge { height:24px; padding:0 var(--cs-space-100); background:var(--ui-cb-bg); border-radius:var(--cs-radius-full); }
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--warning { color:var(--cs-orange-800); }
 .mo-count { padding-top:var(--cs-space-300); }
 
 /* 전체: 남색 머리 면 안 프로필 · 묶음 제목 · 색 칸 아이콘 */
@@ -498,7 +479,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 /* 최근 활동 「전체보기 ›」 = 주요 서비스 「편집」과 같은 글자 크기 · 색 (2026-11-17) */
 .mo-sec__link { color:var(--cs-text-tertiary); font-size:var(--cs-type-input-helper-size); font-weight:500; }
 .mo-sec__link .cs-icon { width:14px; height:14px; }
-.mo-feed__state.is-doing { color:var(--cs-blue-700); background:var(--cs-blue-100); }  /* 진행중 = 파랑 알약 (2026-11-17) */
 
 /* ── 플래너 레퍼런스 톤 2 (2026-11-17 · 일정 앱 레퍼런스 — 스타일만, 구조 그대로) ──
  * 흰 상단 카드는 아래 큰 둥글기 + 부드러운 그림자, 월 선택은 테두리 알약, 선택 날짜는 파란 채움 칸 + 파란 빛 그림자,
@@ -522,16 +502,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-seg-mini .ui-seg__item::after { content:""; position:absolute; inset:-4px 0; }
 .mo-app:has(.mo-week) .mo-filter { padding-top:0; }
 
-/* ── 상태 표시: 바탕 없이 「점 + 글자색」 (2026-11-17 · 홈 최근 활동 · 플래너 공통) ──
- * 점은 선명한 500 단계로 색을 맡고, 글자는 대비 4.5 이상인 진한 단계로 또렷하게 */
-.mo-feed__state, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge { display:inline-flex; align-items:center; gap:var(--cs-space-50); min-width:0; height:auto; padding:0; color:var(--st-c, var(--cs-text-secondary)); background:none; border-radius:0; font-size:var(--cs-type-input-helper-size); font-weight:600; letter-spacing:-.01em; }
-.mo-feed__state::before, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge::before { content:""; flex:none; width:6px; height:6px; background:var(--st-d, var(--cs-grey-400)); border-radius:var(--cs-radius-full); }
-.mo-feed__state.is-done, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--success { --st-c:var(--cs-green-700); --st-d:var(--cs-green-500); }
-.mo-feed__state.is-doing, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--info { --st-c:var(--cs-blue-600); --st-d:var(--cs-blue-500); }
-.mo-feed__state.is-wait, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--warning { --st-c:var(--cs-orange-800); --st-d:var(--cs-orange-500); }
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--danger { --st-c:var(--cs-red-700); --st-d:var(--cs-red-500); }
-/* 홈 최근 활동도 점 + 글자색 (앞선 알약 규칙보다 우선) */
-.mo-feed .mo-feed__state { padding:0; color:var(--st-c); background:none; border-radius:0; }
 
 /* ── 플래너 대상 업체 카드: 일정 앱 레퍼런스 카드 톤 (2026-11-17 · 구조 그대로) ──
  * 작고 가벼운 흰 카드 · 아주 옅은 그림자 · 칸막이 선 없음 · 작은 회색 분류 + 굵은 업체명 · 보조 정보는 한 단계 흐리게 */
@@ -646,7 +616,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-app:has(.mo-week) .mo-visit__type { font-size:var(--cs-type-label-small-size); }
 .mo-app:has(.mo-week) .mo-visit__name { font-weight:700; }
 .mo-app:has(.mo-week) .mo-visit__meta { font-size:var(--cs-type-label-small-size); }
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge::before { width:6px; height:6px; }
 .mo-app:has(.mo-week) .mo-visit.is-done { opacity:1; }
 /* 전체 · 내 정보 */
 .mo-menu .mo-hero .mo-profile { padding:var(--cs-space-250); }
@@ -688,13 +657,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 /* 플래너: 왼쪽 시각을 카드 윗변 높이에 맞춤 (2026-11-18) — 시각 칸 위 여백 = 카드 위 간격(--k-visit-gap), 글자 줄 위 여백만큼 살짝 올림 */
 .mo-app:has(.mo-week) .mo-tl__time { padding-top:0; margin-top:var(--cs-space-200); line-height:1; }
 
-/* 상태 「대기」 색 = orange-400 #FFA555 (2026-11-18 · 사용자 요청 #FF9933에 가장 가까운 DS 토큰으로 사용자 선택) — 점 + 글자 모두. 홈 최근 활동 · 플래너 공통 */
-.mo-feed__state.is-wait, .mo-feed .mo-feed__state.is-wait, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--warning { --st-c:var(--cs-orange-400); --st-d:var(--cs-orange-400); }
-/* 상태 「오류」 색 = red-500 #FF544D (2026-11-18 「진하다」) — 점 + 글자 모두 한 색, 대기(orange-400)와 같은 밝은 톤 */
-.mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--danger { --st-c:var(--cs-red-500); --st-d:var(--cs-red-500); }
-/* 상태 「완료」 · 「진행중」 한 단계 밝게 (2026-11-18 「조금 진하다」) — 점 + 글자 한 색. 완료 green-700 → 500, 진행중 blue-600 → 500 */
-.mo-feed__state.is-done, .mo-feed .mo-feed__state.is-done, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--success { --st-c:var(--cs-green-500); --st-d:var(--cs-green-500); }
-.mo-feed__state.is-doing, .mo-feed .mo-feed__state.is-doing, .mo-app:has(.mo-week) .mo-visit__top .ui-cbadge--info { --st-c:var(--cs-blue-500); --st-d:var(--cs-blue-500); }
 
 /* 플래너: 정렬 「방문 시간순 ⌄」 = 고르는 버튼 (2026-11-18) — 오른쪽 아래 화살표, 누르는 영역 44 */
 .mo-count__sort { position:relative; display:inline-flex; align-items:center; gap:var(--cs-space-25); padding:0; color:var(--cs-text-secondary); background:none; border:0; font:inherit; cursor:pointer; }
@@ -702,8 +664,6 @@ html:has(.mo-home, .mo-week, .mo-menu, .mo-work, .mo-noti, .mo-login) { font-siz
 .mo-count__sort .cs-icon { width:16px; height:16px; color:var(--cs-text-tertiary); }
 .mo-count__sort::after { content:""; position:absolute; inset:-12px -8px; }
 
-/* 상태 점 크기: 홈 최근 활동도 플래너와 같은 칸(--k-st-dot) (2026-11-18 플레이그라운드 맞추기) */
-.mo-feed__state::before { width:6px; height:6px; }
 
 /* ══ 남은 화면 (2026-11-18) — 대표 화면 부품 재사용: 메뉴 카드(mo-menu) · 줄 카드(mo-zone 행) · 홈(mo-home) ══ */
 .mo-app:has(.mo-work, .mo-noti, .mo-svcall) { background:var(--cs-surface-muted); }
@@ -833,26 +793,26 @@ html:has(.mo-page)::-webkit-scrollbar, .mo-page::-webkit-scrollbar, .mo-page *::
  * 선택 안 됨 = 선 아이콘. 선택 = 면 아이콘 3겹이 왼쪽 아래에서 원형으로 번지며 덮음: 노랑 → 청록 → 브랜드 (각 0.07초 차이, 0.32초)
  * 누르면 app.js 가 is-picking 을 붙여 애니메이션 후 이동. 움직임 줄이기 설정이면 바로 이동 */
 .mo-app:has(.ui-bnav) .mo-bottom { box-shadow:none; }   /* 하단 바 위 구분선 삭제 (2026-11-18) */
-.mo-tabic { position:relative; display:grid; width:24px; height:24px; }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic > .cs-icon { grid-area:1 / 1; width:24px; height:24px; }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__line { color:var(--cs-icon-inactive); transition:opacity 120ms linear; }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__fill { clip-path:circle(0% at 12% 88%); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__fill--1 { color:var(--cs-yellow-400); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__fill--2 { color:var(--cs-teal-400); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__fill--3 { color:var(--cs-fill-brand); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-active .mo-tabic__line { opacity:0; }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-active:not(.is-picking) .mo-tabic__fill--3 { clip-path:circle(150% at 12% 88%); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .mo-tabic__fill { animation:mo-tab-wipe 320ms var(--mo-ease-out) forwards; }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .mo-tabic__fill--2 { animation-delay:70ms; }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .mo-tabic__fill--3 { animation-delay:140ms; }
+.ui-bnav__ic { position:relative; display:grid; width:24px; height:24px; }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__ic > .cs-icon { grid-area:1 / 1; width:24px; height:24px; }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__line { color:var(--cs-icon-inactive); transition:opacity 120ms linear; }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__fill { clip-path:circle(0% at 12% 88%); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__fill--1 { color:var(--cs-yellow-400); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__fill--2 { color:var(--cs-teal-400); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__fill--3 { color:var(--cs-fill-brand); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-active .ui-bnav__line { opacity:0; }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-active:not(.is-picking) .ui-bnav__fill--3 { clip-path:circle(150% at 12% 88%); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .ui-bnav__fill { animation:mo-tab-wipe 320ms var(--mo-ease-out) forwards; }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .ui-bnav__fill--2 { animation-delay:70ms; }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .ui-bnav__fill--3 { animation-delay:140ms; }
 @keyframes mo-tab-wipe { to { clip-path:circle(150% at 12% 88%); } }
-@media (prefers-reduced-motion: reduce) { .mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .mo-tabic__fill { animation:none; } }
+@media (prefers-reduced-motion: reduce) { .mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab.is-picking .ui-bnav__fill { animation:none; } }
 
 /* ── 플레이그라운드 조절판 3 (2026-11-18 맞추기): 하단 탭 · 체크박스 · 업무 · 알림. 기본값 = 지금 값 ── */
 .mo-app:has(.ui-bnav) .mo-bottom { box-shadow:0 -4px 16px color-mix(in srgb, var(--cs-navy-900) 6%, transparent); }   /* 하단 바 = 옅은 위쪽 그림자로 구분 (2026-11-18 사용자 — 선 없음은 어색) */
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__line { color:var(--cs-icon-inactive); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__fill--1 { color:var(--cs-yellow-400); }
-.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .mo-tabic__fill--2 { color:var(--cs-teal-400); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__line { color:var(--cs-icon-inactive); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__fill--1 { color:var(--cs-yellow-400); }
+.mo-app:has(.ui-bnav) .mo-bottom .ui-bnav .ui-bnav__tab .ui-bnav__fill--2 { color:var(--cs-teal-400); }
 .mo-page .ui-ctl:not(.is-on):not(.is-mixed) .ui-ctl__box { box-shadow:inset 0 0 0 1.5px var(--cs-grey-400); }
 .mo-top--work { padding-bottom:var(--cs-space-250); }
 .mo-work .mo-todo__row { min-height:72px; box-shadow:none; }
@@ -909,3 +869,12 @@ html:has(.mo-page)::-webkit-scrollbar, .mo-page::-webkit-scrollbar, .mo-page *::
 
 /* 데이터 상태 (2026-11-18): render.js 가 [data-view] 묶음에 hidden 을 붙여 상태(불러오는 중 · 빈 상태 · 오류)를 바꿈 — 부품의 display 보다 우선 */
 .mo-page [hidden] { display:none !important; }
+
+/* 상태 표시 = 디자인 시스템 「상태 점 배지」(.ui-cbadge--dot, 2026-11-19 DS v0.9) — 화면 덮어쓰기 없이 DS 그대로.
+ * 여기서는 플레이그라운드 조절 칸(--k-st-*)만 연결: 완료 green-500 · 진행중 blue-500 · 대기 orange-400 · 오류 red-500 (사용자 결정) */
+.mo-page .ui-cbadge--dot.ui-cbadge--success { --ui-cb-dot:var(--cs-green-500); }
+.mo-page .ui-cbadge--dot.ui-cbadge--info { --ui-cb-dot:var(--cs-blue-500); }
+.mo-page .ui-cbadge--dot.ui-cbadge--warning { --ui-cb-dot:var(--cs-orange-400); }
+.mo-page .ui-cbadge--dot.ui-cbadge--danger { --ui-cb-dot:var(--cs-red-500); }
+.mo-page .ui-cbadge--dot::before { width:6px; height:6px; }
+.mo-feed__row > .ui-cbadge--dot { flex:none; }

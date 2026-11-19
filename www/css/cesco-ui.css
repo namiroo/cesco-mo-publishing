@@ -1,5 +1,5 @@
 /* CESCO 디자인 시스템 부품 · 토큰
- * 원본: 03_DesignSystem/index.html 에서 자동 추출 (2026-11-18)
+ * 원본: 03_DesignSystem/index.html 에서 자동 추출 (2026-11-19)
  * 직접 고치지 말 것 — 원본 문서를 고친 뒤 python3 tools/build_ds.py
  */
 /* ── type-tokens.css ── */
@@ -90,7 +90,7 @@
   --cs-type-nav-tab-size: 1.0rem;  /* 16px */
   --cs-type-nav-tab-line-height: 1.375;  /* 24px */
   --cs-type-nav-tab-weight: 500;
-  --cs-type-nav-bottom-size: 0.75rem;  /* 12px */
+  --cs-type-nav-bottom-size: 0.8125rem;  /* 13px — 2026-11-19 앱 기준 (이전 12) */
   --cs-type-nav-bottom-line-height: 1.333;  /* 18px */
   --cs-type-nav-bottom-weight: 500;
 
@@ -186,7 +186,7 @@
   --cs-type-nav-tab-selected-line-height: 1.375;
   --cs-type-nav-tab-size: 1.125rem;  /* 18px */
   --cs-type-nav-tab-line-height: 1.375;
-  --cs-type-nav-bottom-size: 0.8125rem;  /* 13px */
+  --cs-type-nav-bottom-size: 0.875rem;  /* 14px — 2026-11-19 (이전 13) */
   --cs-type-nav-bottom-line-height: 1.333;
   --cs-type-button-large-size: 1.125rem;  /* 18px */
   --cs-type-button-large-line-height: 1.412;
@@ -2885,7 +2885,7 @@ button.ui-avatar { padding:0; border:0; cursor:pointer; }
 .ui-cbadge--solid { --ui-cb-bg:var(--ui-cb-tint, var(--cs-fill-neutral)); }
 /* 2026-11-18 상태 점 배지 (--dot): 바탕 없이 「점 + 글자」 한 색 — 완료 green-500 · 진행중 blue-500 · 대기 orange-400 · 오류 red-500 (흰 바탕 글자 대비 4.5 미달 — 사용자 결정, 접근성 필요 시 글자만 700 단계)
  * <span class="ui-cbadge ui-cbadge--dot ui-cbadge--success">완료</span> */
-.ui-cbadge--dot { display:inline-flex; align-items:center; gap:4px; height:auto; min-width:0; padding:0; color:var(--ui-cb-dot, var(--cs-text-secondary)); background:none; border-radius:0; font-weight:600; }
+.ui-cbadge--dot { --ui-cb-fs:var(--cs-type-input-helper-size); display:inline-flex; align-items:center; gap:4px; height:auto; min-width:0; padding:0; color:var(--ui-cb-dot, var(--cs-text-secondary)); background:none; border-radius:0; font-weight:600; letter-spacing:-.01em; }   /* 2026-11-19 글자 13 · 자간 (앱 기준) */
 .ui-cbadge--dot::before { content:""; flex:none; width:6px; height:6px; background:var(--ui-cb-dot, var(--cs-grey-400)); border-radius:50%; }
 .ui-cbadge--dot.ui-cbadge--success { --ui-cb-dot:var(--cs-green-500); } .ui-cbadge--dot.ui-cbadge--info { --ui-cb-dot:var(--cs-blue-500); }
 .ui-cbadge--dot.ui-cbadge--warning { --ui-cb-dot:var(--cs-orange-400); } .ui-cbadge--dot.ui-cbadge--danger { --ui-cb-dot:var(--cs-red-500); }
@@ -3099,15 +3099,18 @@ button.ui-avatar { padding:0; border:0; cursor:pointer; }
 
 /* ── Bottom navigation ───────────────────────────────────
  * <nav class="ui-bnav"><a class="ui-bnav__tab is-active" aria-current="page"><svg class="cs-icon"/><span>홈</span></a>…</nav>
- * 높이: Web 58 · iOS 49(+Safe area 34) · Android 64(+14)   탭 최대 5개 · 레이블 6자 이내 · 1Depth 화면에서만
+ * 높이: Web 62(+위아래 4) · iOS 49(+Safe area 34) · Android 64(+14)   탭 최대 5개 · 레이블 6자 이내 · 1Depth 화면에서만
+ * 선택 안 됨 = 선 아이콘 icon-inactive(grey-400) + 글자 grey-500 13 · 400 / 선택 = 면 아이콘 fill-brand + 글자 text-brand 600 (2026-11-19 앱 기준)
  */
-.ui-bnav { display:flex; width:100%; height:var(--ui-bn-h, 58px); padding-bottom:var(--ui-bn-safe, 0px); box-sizing:content-box; background:var(--cs-surface-screen); box-shadow:0 -4px 16px color-mix(in srgb, var(--cs-navy-900) 6%, transparent); }   /* 2026-11-18 위 선 → 옅은 위쪽 그림자 (화면 아래에 붙은 바) */
+.ui-bnav { display:flex; width:100%; height:var(--ui-bn-h, 62px); padding:4px 4px calc(4px + var(--ui-bn-safe, 0px)); box-sizing:content-box; background:var(--cs-surface-screen); box-shadow:0 -4px 16px color-mix(in srgb, var(--cs-navy-900) 6%, transparent); }   /* 2026-11-19 앱 기준: 화면 아래에 붙은 바 · 62 + 위아래 4 · 위 선 대신 옅은 위쪽 그림자 */
 .ui-bnav--ios { --ui-bn-h:49px; } .ui-bnav--android { --ui-bn-h:64px; }
 .ui-bnav--chrome { background:color-mix(in srgb, var(--cs-surface-screen) 72%, transparent); backdrop-filter:blur(16px) saturate(1.4); }
-.ui-bnav__tab { position:relative; flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; color:var(--cs-text-tertiary); font-size:var(--cs-type-nav-bottom-size, 12px); font-weight:500; text-decoration:none; }
+.ui-bnav__tab { position:relative; flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; color:var(--cs-grey-500); font-size:var(--cs-type-nav-bottom-size, 13px); font-weight:400; text-decoration:none; }
+.ui-bnav__tab .cs-icon { color:var(--cs-icon-inactive); }
+.ui-bnav__tab.is-active .cs-icon { color:var(--cs-fill-brand); }
 .ui-bnav__tab .cs-icon { width:24px; height:24px; }
 .ui-bnav__tab .ui-avatar { --ui-av:24px; }
-.ui-bnav__tab.is-active { color:var(--cs-text-brand); font-weight:700; }
+.ui-bnav__tab.is-active { color:var(--cs-text-brand); font-weight:600; }
 .ui-bnav__tab.is-hover::before, .ui-bnav__tab.is-pressed::before { content:""; position:absolute; inset:4px 6px; border-radius:10px; background:var(--ui-overlay-hover); }
 .ui-bnav__tab.is-pressed::before { background:var(--ui-overlay-pressed); }
 /* 2026-11-18 하단 탭 아이콘 인터랙션 (선택): <a class="ui-bnav__tab"><span class="ui-bnav__ic"><svg class="cs-icon ui-bnav__line">선 아이콘</svg><svg class="cs-icon ui-bnav__fill ui-bnav__fill--1">면 아이콘</svg>…--2 …--3</span><span>홈</span></a>
@@ -3120,7 +3123,7 @@ button.ui-avatar { padding:0; border:0; cursor:pointer; }
 .ui-bnav__fill--1 { color:var(--cs-yellow-400); } .ui-bnav__fill--2 { color:var(--cs-teal-400); } .ui-bnav__fill--3 { color:var(--cs-fill-brand); }
 .ui-bnav__tab.is-active .ui-bnav__line { opacity:0; }
 .ui-bnav__tab.is-active:not(.is-picking) .ui-bnav__fill--3 { clip-path:circle(150% at 12% 88%); }
-.ui-bnav__tab.is-picking .ui-bnav__fill { animation:ui-bnav-wipe 320ms cubic-bezier(.23, 1, .32, 1) forwards; }
+.ui-bnav__tab.is-picking:not([style*="--frozen"]) .ui-bnav__fill { animation:ui-bnav-wipe 320ms cubic-bezier(.23, 1, .32, 1) forwards; }
 .ui-bnav__tab.is-picking .ui-bnav__fill--2 { animation-delay:70ms; } .ui-bnav__tab.is-picking .ui-bnav__fill--3 { animation-delay:140ms; }
 @keyframes ui-bnav-wipe { to { clip-path:circle(150% at 12% 88%); } }
 @media (prefers-reduced-motion: reduce) { .ui-bnav__tab.is-picking .ui-bnav__fill { animation:none; } }
